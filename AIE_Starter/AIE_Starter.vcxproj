@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Behaviour.cpp" />
+    <ClCompile Include="FollowBehaviour.cpp" />
     <ClCompile Include="GoToPointBehaviour.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="AIE_Starter.cpp" />
@@ -154,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Behaviour.h" />
+    <ClInclude Include="FollowBehaviour.h" />
     <ClInclude Include="GoToPointBehaviour.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="NodeMap.h" />

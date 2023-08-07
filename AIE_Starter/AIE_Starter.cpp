@@ -8,6 +8,7 @@
 #include "Agent.h"
 #include "GoToPointBehaviour.h"
 #include "WanderBehaviour.h"
+#include "FollowBehaviour.h"
 
 using namespace AIForGames;
 
@@ -66,8 +67,11 @@ int main(int argc, char* argv[])
     Color pathColor = { 255, 255, 255, 255 };
 
 
-    Agent agent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
-    Agent agent2(&nodeMap, new WanderBehaviour(), start, agentMoveSpeed);
+    Agent agent1(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
+    Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
+    Agent agent3(&nodeMap, new FollowBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed - 40, GREEN, &agent1);
+
+    agent3.SetTargetAgent(&agent1);
 
     float time = (float)GetTime();
     float deltaTime;
@@ -85,8 +89,9 @@ int main(int argc, char* argv[])
 
         // UPDATE
         //----------------------------------------------------------------------------------
-        agent.Update(deltaTime);
+        agent1.Update(deltaTime);
         agent2.Update(deltaTime);
+        agent3.Update(deltaTime);
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -94,12 +99,14 @@ int main(int argc, char* argv[])
 
         ClearBackground(BLACK);
 
-        agent.Draw();
+        agent1.Draw();
         agent2.Draw();
+        agent3.Draw();
         nodeMap.Draw();
 
-        DrawPath(agent.GetPath(), pathColor);
+        DrawPath(agent1.GetPath(), pathColor);
         DrawPath(agent2.GetPath(), BLUE);
+        DrawPath(agent3.GetPath(), GREEN);
 
 
         EndDrawing();

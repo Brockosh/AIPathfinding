@@ -7,13 +7,14 @@ class Agent
 
 public:
 	Agent();
-	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed)
+	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
 	{
 		current = behaviour;
 		this->nodeMap = nodeMap;
 		pathAgent.SetNode(startingNode);
 		pathAgent.SetSpeed(speed);
-		color = { 255, 255, 0, 255 };
+		this->targetAgent = targetAgent;
+		color = agentColor;
 	}
 	~Agent() { delete current; }
 
@@ -28,11 +29,17 @@ public:
 
 	NodeMap* GetNodeMap() { return this->nodeMap;  }
 	PathAgent GetPathAgent() { return this->pathAgent; }
+	glm::vec2 GetPosition() { return pathAgent.GetPosition(); }
+
+	void SetTargetAgent(Agent* target) { targetAgent = target; }
+
+	Agent* GetTargetAgent() { return targetAgent; }
 
 private:
 	PathAgent pathAgent;
 	Behaviour* current;
 	NodeMap* nodeMap;
 	Color color;
+	Agent* targetAgent;
 };
 

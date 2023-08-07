@@ -19,15 +19,13 @@ class NodeMap
 	static bool NodeInList(std::vector<Node*> list);
 
 public:
-	/*Node* GetStart() const { return start; }
-	Node* GetEnd() const { return end; }
-	void SetStart(Node* node) { start = node; }
-	void SetEnd(Node* node) { end = node; }*/
+
 	void Init(std::vector<std::string> asciiMap, int cellSize);
 	Node* GetNode(int x, int y) { return nodes[x + width * y]; }
 	void Draw();
 	Node* GetClosestNode(glm::vec2 worldPos);
 	static std::vector<Node*>DijkstrasSearch(Node* startNode, Node* endNode);
 	Node* GetRandomNode();
+	float GetCellSize() { return cellSize; }
 };
 

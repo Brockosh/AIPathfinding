@@ -13,7 +13,7 @@ void Agent::Update(float deltaTime)
 
 void Agent::Draw()
 {
-	pathAgent.Draw();
+	DrawCircle((int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, 12, color);
 }
 
 void Agent::GoTo(glm::vec2 pos)

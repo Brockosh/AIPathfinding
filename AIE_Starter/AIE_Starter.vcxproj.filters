@@ -51,6 +51,9 @@
     <ClCompile Include="WanderBehaviour.cpp">
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
+    <ClCompile Include="FollowBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="WanderBehaviour.h">
       <Filter>Header Files\Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowBehaviour.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

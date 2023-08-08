@@ -9,6 +9,7 @@
 #include "GoToPointBehaviour.h"
 #include "WanderBehaviour.h"
 #include "FollowBehaviour.h"
+#include "SelectorBehaviour.h"
 
 using namespace AIForGames;
 
@@ -69,7 +70,8 @@ int main(int argc, char* argv[])
 
     Agent agent1(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
     Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
-    Agent agent3(&nodeMap, new FollowBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed - 40, GREEN, &agent1);
+    //Agent agent3(&nodeMap, new FollowBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed - 40, GREEN, &agent1);
+    Agent agent3(&nodeMap, new SelectorBehaviour(new FollowBehaviour, new WanderBehaviour), nodeMap.GetRandomNode(), agentMoveSpeed - 100, GREEN, &agent1);
 
     agent3.SetTargetAgent(&agent1);
 
@@ -100,12 +102,12 @@ int main(int argc, char* argv[])
         ClearBackground(BLACK);
 
         agent1.Draw();
-        agent2.Draw();
+        //agent2.Draw();
         agent3.Draw();
         nodeMap.Draw();
 
         DrawPath(agent1.GetPath(), pathColor);
-        DrawPath(agent2.GetPath(), BLUE);
+       // DrawPath(agent2.GetPath(), BLUE);
         DrawPath(agent3.GetPath(), GREEN);
 
 

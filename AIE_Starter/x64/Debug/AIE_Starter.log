@@ -1,6 +1,6 @@
 ﻿  AIE_Starter.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(59,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(70,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(71,91): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(60,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(71,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(72,91): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(74,133): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

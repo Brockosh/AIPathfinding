@@ -4,6 +4,11 @@ Agent::Agent()
 {
 }
 
+void Agent::Reset()
+{
+	pathAgent.path.clear();
+}
+
 void Agent::Update(float deltaTime)
 {
 	if (current != nullptr)

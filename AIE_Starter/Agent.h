@@ -18,6 +18,10 @@ public:
 	}
 	~Agent() { delete current; }
 
+	//My additions
+	void Reset();
+
+
 	void Update(float deltaTime);
 	void Draw();
 	void GoTo(glm::vec2 pos);
@@ -34,6 +38,8 @@ public:
 	void SetTargetAgent(Agent* target) { targetAgent = target; }
 
 	Agent* GetTargetAgent() { return targetAgent; }
+
+	void SetColor(Color color) { this->color = color; }
 
 private:
 	PathAgent pathAgent;

@@ -102,12 +102,12 @@ int main(int argc, char* argv[])
         ClearBackground(BLACK);
 
         agent1.Draw();
-        //agent2.Draw();
+        agent2.Draw();
         agent3.Draw();
         nodeMap.Draw();
 
         DrawPath(agent1.GetPath(), pathColor);
-       // DrawPath(agent2.GetPath(), BLUE);
+        DrawPath(agent2.GetPath(), BLUE);
         DrawPath(agent3.GetPath(), GREEN);
 
 

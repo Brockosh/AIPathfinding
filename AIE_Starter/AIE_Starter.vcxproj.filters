@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Pathfinding">
       <UniqueIdentifier>{026e7bc7-9be0-4850-b115-b5c6c8f99a09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\FSM">
+      <UniqueIdentifier>{287def0c-7525-4e8e-b12f-8e65b071611f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM">
+      <UniqueIdentifier>{08af24a8-fcca-4f8b-b1f2-e42a84cb04a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIE_Starter.cpp">
@@ -52,16 +58,22 @@
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="FollowBehaviour.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="SelectorBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Condition.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Condition.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="DistanceCondition.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FiniteStateMachine.cpp">
+      <Filter>Source Files\FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,16 +102,22 @@
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="FollowBehaviour.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="SelectorBehaviour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Condition.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="DistanceCondition.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FiniteStateMachine.h">
+      <Filter>Header Files\FSM</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

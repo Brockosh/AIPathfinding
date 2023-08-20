@@ -10,6 +10,9 @@
 #include "WanderBehaviour.h"
 #include "FollowBehaviour.h"
 #include "SelectorBehaviour.h"
+#include "DistanceCondition.h"
+#include "State.h"
+#include "FiniteStateMachine.h"
 
 using namespace AIForGames;
 
@@ -35,7 +38,7 @@ int main(int argc, char* argv[])
     int screenWidth =1080;
     int screenHeight = 720;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(screenWidth, screenHeight, "AI Pathfinding");
 
     SetTargetFPS(60);
     //--------------------------------------------------------------------------------------
@@ -69,11 +72,31 @@ int main(int argc, char* argv[])
 
 
     Agent agent1(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
-    Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
-    //Agent agent3(&nodeMap, new FollowBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed - 40, GREEN, &agent1);
-    Agent agent3(&nodeMap, new SelectorBehaviour(new FollowBehaviour, new WanderBehaviour), nodeMap.GetRandomNode(), agentMoveSpeed - 100, GREEN, &agent1);
+    /*Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
+    Agent agent3(&nodeMap, new SelectorBehaviour(new FollowBehaviour, new WanderBehaviour), nodeMap.GetRandomNode(), agentMoveSpeed - 100, GREEN, &agent1);*/
 
-    agent3.SetTargetAgent(&agent1);
+    //agent3.SetTargetAgent(&agent1);
+
+    ///////////////////////////
+
+    DistanceCondition* closerThan2 = new DistanceCondition(2.0f * nodeMap.GetCellSize(), true);
+    DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
+
+
+    State* wanderState = new State(new WanderBehaviour());
+    State* followState = new State(new FollowBehaviour());
+
+    wanderState->AddTransition(closerThan2, followState);
+    followState->AddTransition(furtherThan4, wanderState);
+
+    FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
+    fsm->AddState(wanderState);
+    fsm->AddState(followState);
+
+    Agent agentFSM(&nodeMap, fsm, nodeMap.GetRandomNode(), agentMoveSpeed / 3, GREEN, &agent1);
+
+    //////////////////////////
+
 
     float time = (float)GetTime();
     float deltaTime;
@@ -92,8 +115,9 @@ int main(int argc, char* argv[])
         // UPDATE
         //----------------------------------------------------------------------------------
         agent1.Update(deltaTime);
-        agent2.Update(deltaTime);
-        agent3.Update(deltaTime);
+        /*agent2.Update(deltaTime);
+        agent3.Update(deltaTime);*/
+        agentFSM.Update(deltaTime);
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -102,13 +126,15 @@ int main(int argc, char* argv[])
         ClearBackground(BLACK);
 
         agent1.Draw();
-        agent2.Draw();
-        agent3.Draw();
+        /*agent2.Draw();
+        agent3.Draw();*/
+        agentFSM.Draw();
         nodeMap.Draw();
 
         DrawPath(agent1.GetPath(), pathColor);
-        DrawPath(agent2.GetPath(), BLUE);
-        DrawPath(agent3.GetPath(), GREEN);
+        /*DrawPath(agent2.GetPath(), BLUE);
+        DrawPath(agent3.GetPath(), GREEN);*/
+        DrawPath(agentFSM.GetPath(), GREEN);
 
 
         EndDrawing();

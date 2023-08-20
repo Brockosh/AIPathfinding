@@ -10,3 +10,8 @@ void WanderBehaviour::Update(Agent* agent, float deltaTime)
 	agent->GoTo(agent->GetNodeMap()->GetRandomNode()->position);
 	
 }
+
+void WanderBehaviour::Enter(Agent* agent)
+{
+	agent->SetColor(BLUE);
+}

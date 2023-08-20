@@ -15,6 +15,7 @@ public:
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
 		color = agentColor;
+		current->Enter(this);
 	}
 	~Agent() { delete current; }
 

@@ -18,3 +18,8 @@ void FollowBehaviour::Update(Agent* agent, float deltaTime)
 	}
 
 }
+
+void FollowBehaviour::Enter(Agent* agent)
+{
+	agent->SetColor(RED);
+}

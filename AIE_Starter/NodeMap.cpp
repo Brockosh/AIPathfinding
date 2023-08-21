@@ -27,6 +27,21 @@ void NodeMap::ConnectWestAndSouth(int x, int y)
 			nodeSouth->ConnectTo(node, 1);
 		}
 
+		
+		Node* nodeSouthWest = (x == 0 || y == 0) ? nullptr : GetNode(x - 1, y - 1);
+		if (nodeSouthWest)
+		{
+			node->ConnectTo(nodeSouthWest, 1.414f); // TODO weights
+			nodeSouthWest->ConnectTo(node, 1.414f);
+		}
+
+		Node* nodeSouthEast = (x == width - 1 || y == 0) ? nullptr : GetNode(x + 1, y - 1);
+		if (nodeSouthEast)
+		{
+			node->ConnectTo(nodeSouthEast, 1.414f);
+			nodeSouthEast->ConnectTo(node, 1.414f);
+		}
+
 
 	}
 
@@ -209,3 +224,76 @@ Node* NodeMap::GetRandomNode()
 	return node;
 }
 
+//bool NodeMap::IsVisible(Node* start, Node* end)
+//{
+//	// calculate a vector from start to end that is one cellsize in length
+//
+//	Vector2 delta = Vector2Subtract(end->position, start->position);
+//	float distance = Vector2Distance(end->position, start->position);
+//	delta = Vector2Scale(delta, cellSize / distance);
+//
+//	// step forward in that direction one cell at a time from start towards end
+//	for (float cells = 1.0f; cells < distance / cellSize; cells += 1.0f)
+//	{
+//		Vector2 testPosition = Vector2Add(start->position,
+//			Vector2Scale(delta, cells));
+//		// if the square below in unpassable, then we don’t have line of sight          
+//		// from start to end
+//		if (GetClosestNode(testPosition) == nullptr)
+//			return false;
+//	}
+//
+//	// we've travelled the whole path without hitting an obstacle!
+//	return true;
+//}
+
+
+bool NodeMap::IsVisible(Node* start, Node* end)
+{
+	// calculate a vector from start to end that is one cellsize in length
+
+	glm::vec2 delta = end->position - start->position;
+
+	//This gives us the diagonal
+	float distance = glm::length(delta);
+	delta = delta * (cellSize / distance);
+
+	// step forward in that direction one cell at a time from start towards end
+	for (float cells = 1.0f; cells < distance / cellSize; cells += 1.0f)
+	{
+		glm::vec2 testPosition = start->position + delta * cells;
+
+		// if the square below in unpassable, then we don’t have line of sight          
+		// from start to end
+		if (GetClosestNode(testPosition) == nullptr)
+			return false;
+	}
+
+	// we've travelled the whole path without hitting an obstacle!
+	return true;
+}
+
+std::vector<Node*> NodeMap::SmoothPath(std::vector<Node*> path)
+{
+	if (path.empty()) return path; // Return early if path is empty.
+
+	std::vector<Node*> smoothedPath;
+	Node* currentNode = path[0];
+	smoothedPath.push_back(currentNode);
+
+	for (size_t i = 0; i < path.size() - 1; )
+	{
+		size_t lookAhead = i + 1;
+		while (lookAhead < path.size() && IsVisible(currentNode, path[lookAhead]))
+		{
+			lookAhead++;
+		}
+
+		currentNode = path[lookAhead - 1]; // Last node that had line-of-sight with currentNode.
+		smoothedPath.push_back(currentNode);
+
+		i = lookAhead - 1;
+	}
+
+	return smoothedPath;
+}

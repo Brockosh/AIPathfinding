@@ -37,6 +37,7 @@ void PathAgent::Update(float deltaTime)
 void PathAgent::SetDestination(Node* node)
 {
 	path = NodeMap::DijkstrasSearch(currentNode, node);
+	//path = nodeMap->SmoothPath(path);
 	currentIndex = 0;
 }
 

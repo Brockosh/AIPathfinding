@@ -17,6 +17,7 @@ class NodeMap
 
 	void ConnectWestAndSouth(int x, int y);
 	static bool NodeInList(std::vector<Node*> list);
+	bool IsVisible(Node* start, Node* end);
 
 public:
 
@@ -27,5 +28,6 @@ public:
 	static std::vector<Node*>DijkstrasSearch(Node* startNode, Node* endNode);
 	Node* GetRandomNode();
 	float GetCellSize() { return cellSize; }
+	std::vector<Node*> SmoothPath(std::vector<Node*> path);
 };
 

@@ -65,15 +65,15 @@ int main(int argc, char* argv[])
     asciiMap.push_back("01010111011101001010101001010110");
     asciiMap.push_back("01010101001001111010101111010110");
     asciiMap.push_back("01011101111101001111111001010110");
-    asciiMap.push_back("01000000001111000010001001000110");
+    asciiMap.push_back("01001000001111000010001001000110");
     asciiMap.push_back("01111111111111001111101111111110");
     asciiMap.push_back("01111101001111111010101000000110");
     asciiMap.push_back("01111101000100001010101011111110");
     asciiMap.push_back("01001001011111111010101010000010");
     asciiMap.push_back("01011101010100001111101010111110");
-    asciiMap.push_back("01011101010101111000111111111110");
+    asciiMap.push_back("01111111011101111000111111111110");
     asciiMap.push_back("01011101010101111111101010111110");
-    asciiMap.push_back("01000001010001000000001010000010");
+    asciiMap.push_back("01001001010101000001001010000010");
     asciiMap.push_back("01111111111111111111111111111110");
     asciiMap.push_back("00000000000000000000000000000000");
 
@@ -92,8 +92,8 @@ int main(int argc, char* argv[])
 
 
     Agent agent1(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
-    /*Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
-    Agent agent3(&nodeMap, new SelectorBehaviour(new FollowBehaviour, new WanderBehaviour), nodeMap.GetRandomNode(), agentMoveSpeed - 100, GREEN, &agent1);*/
+    Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
+    //Agent agent3(&nodeMap, new SelectorBehaviour(new FollowBehaviour, new WanderBehaviour), nodeMap.GetRandomNode(), agentMoveSpeed - 100, GREEN, &agent1);*/
 
     //agent3.SetTargetAgent(&agent1);
 
@@ -135,8 +135,8 @@ int main(int argc, char* argv[])
         // UPDATE
         //----------------------------------------------------------------------------------
         agent1.Update(deltaTime);
-        /*agent2.Update(deltaTime);
-        agent3.Update(deltaTime);*/
+        agent2.Update(deltaTime);
+        //agent3.Update(deltaTime);
         agentFSM.Update(deltaTime);
 
         // Draw
@@ -146,14 +146,14 @@ int main(int argc, char* argv[])
         ClearBackground(BLACK);
 
         agent1.Draw();
-        /*agent2.Draw();
-        agent3.Draw();*/
+        agent2.Draw();
+        //agent3.Draw();
         agentFSM.Draw();
         nodeMap.Draw();
 
         DrawPath(agent1.GetPath(), pathColor);
-        /*DrawPath(agent2.GetPath(), BLUE);
-        DrawPath(agent3.GetPath(), GREEN);*/
+        DrawPath(agent2.GetPath(), BLUE);
+        //DrawPath(agent3.GetPath(), GREEN);
         DrawPath(agentFSM.GetPath(), GREEN);
 
 

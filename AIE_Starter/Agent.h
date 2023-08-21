@@ -1,13 +1,14 @@
 #pragma once
 #include "PathAgent.h"
 #include "Behaviour.h"
+#include "Decision.h"
 
 class Agent
 {
 
 public:
 	Agent();
-	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
+	/*Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
 	{
 		current = behaviour;
 		this->nodeMap = nodeMap;
@@ -16,8 +17,23 @@ public:
 		this->targetAgent = targetAgent;
 		color = agentColor;
 		current->Enter(this);
+	}*/
+
+	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
+	{
+		this->decisionRoot = decisionRoot;
+		this->nodeMap = nodeMap;
+		pathAgent.SetNode(startingNode);
+		pathAgent.SetSpeed(speed);
+		this->targetAgent = targetAgent;
+		color = agentColor;
+		// Initialization or entry calls for behaviours would now be in your decision tree structure
 	}
-	~Agent() { delete current; }
+
+	//~Agent() { delete current; }
+
+	~Agent() { delete decisionRoot; }
+
 
 	//My additions
 	void Reset();
@@ -42,11 +58,14 @@ public:
 
 	void SetColor(Color color) { this->color = color; }
 
+	Decision* GetDecisionRoot() { return decisionRoot; }
+
 private:
 	PathAgent pathAgent;
 	Behaviour* current;
 	NodeMap* nodeMap;
 	Color color;
 	Agent* targetAgent;
+	Decision* decisionRoot;
 };
 

@@ -9,10 +9,17 @@ void Agent::Reset()
 	pathAgent.path.clear();
 }
 
+//void Agent::Update(float deltaTime)
+//{
+//	if (current != nullptr)
+//		current->Update(this, deltaTime);
+//	pathAgent.Update(deltaTime);
+//}
+
 void Agent::Update(float deltaTime)
 {
-	if (current != nullptr)
-		current->Update(this, deltaTime);
+	if (decisionRoot != nullptr)
+		decisionRoot->MakeDecision(this, deltaTime);
 	pathAgent.Update(deltaTime);
 }
 

@@ -11,8 +11,11 @@
 #include "FollowBehaviour.h"
 #include "SelectorBehaviour.h"
 #include "DistanceCondition.h"
+#include "DecisionBehaviour.h"
 #include "State.h"
 #include "FiniteStateMachine.h"
+#include "Decision.h"
+#include "ABDecision.h"
 
 using namespace AIForGames;
 
@@ -86,18 +89,12 @@ int main(int argc, char* argv[])
 #pragma endregion
 
     Node* start = nodeMap.GetNode(1, 1);
-    Node* end = nodeMap.GetNode(10, 2);
+    //Node* end = nodeMap.GetNode(10, 2);
 
-    Color pathColor = { 255, 255, 255, 255 };
+    //Color pathColor = { 255, 255, 255, 255 };
 
+    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
 
-    Agent agent1(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
-    Agent agent2(&nodeMap, new WanderBehaviour(), nodeMap.GetRandomNode(), agentMoveSpeed + 50, BLUE);
-    //Agent agent3(&nodeMap, new SelectorBehaviour(new FollowBehaviour, new WanderBehaviour), nodeMap.GetRandomNode(), agentMoveSpeed - 100, GREEN, &agent1);*/
-
-    //agent3.SetTargetAgent(&agent1);
-
-    ///////////////////////////
 
     DistanceCondition* closerThan2 = new DistanceCondition(2.0f * nodeMap.GetCellSize(), true);
     DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
@@ -110,10 +107,11 @@ int main(int argc, char* argv[])
     followState->AddTransition(furtherThan4, wanderState);
 
     FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
-    fsm->AddState(wanderState);
+    //fsm->AddState(wanderState);
     fsm->AddState(followState);
 
-    Agent agentFSM(&nodeMap, fsm, nodeMap.GetRandomNode(), agentMoveSpeed / 3, GREEN, &agent1);
+    Agent agentFSM(&nodeMap, fsm, nodeMap.GetRandomNode(), agentMoveSpeed / 2, GREEN, &myAgent);
+
 
     //////////////////////////
 
@@ -134,10 +132,9 @@ int main(int argc, char* argv[])
 
         // UPDATE
         //----------------------------------------------------------------------------------
-        agent1.Update(deltaTime);
-        agent2.Update(deltaTime);
-        //agent3.Update(deltaTime);
+        myAgent.Update(deltaTime);
         agentFSM.Update(deltaTime);
+      
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -145,16 +142,13 @@ int main(int argc, char* argv[])
 
         ClearBackground(BLACK);
 
-        agent1.Draw();
-        agent2.Draw();
-        //agent3.Draw();
+        myAgent.Draw();
         agentFSM.Draw();
         nodeMap.Draw();
 
-        DrawPath(agent1.GetPath(), pathColor);
-        DrawPath(agent2.GetPath(), BLUE);
-        //DrawPath(agent3.GetPath(), GREEN);
+        DrawPath(myAgent.GetPath(), WHITE);
         DrawPath(agentFSM.GetPath(), GREEN);
+     
 
 
         EndDrawing();

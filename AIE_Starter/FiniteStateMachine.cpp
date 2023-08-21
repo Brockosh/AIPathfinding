@@ -2,6 +2,12 @@
 #include "State.h"
 #include "Condition.h"
 
+FiniteStateMachine::FiniteStateMachine(State* s) : currentState(s), newState(nullptr) 
+{
+	states.push_back(s);
+}
+
+
 FiniteStateMachine::~FiniteStateMachine()
 {
 	for (auto s : states)

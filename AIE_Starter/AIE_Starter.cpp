@@ -35,8 +35,8 @@ int main(int argc, char* argv[])
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    int screenWidth =1080;
-    int screenHeight = 720;
+    int screenWidth = 1920;
+    int screenHeight = 1080;
 
     InitWindow(screenWidth, screenHeight, "AI Pathfinding");
 
@@ -47,19 +47,39 @@ int main(int argc, char* argv[])
 
 
     std::vector<std::string> asciiMap;
-    asciiMap.push_back("000000000000");
+    /*asciiMap.push_back("000000000000");
     asciiMap.push_back("010111011100");
     asciiMap.push_back("010101110110");
     asciiMap.push_back("010100000000");
     asciiMap.push_back("010111111110");
     asciiMap.push_back("010000001000");
     asciiMap.push_back("011111111110");
-    asciiMap.push_back("000000000000");
+    asciiMap.push_back("000000000000");*/
 
+    asciiMap.push_back("00000000000000000000000000000000");
+    asciiMap.push_back("01111111111111111111111111111110");
+    asciiMap.push_back("01110001111111001111110001111110");
+    asciiMap.push_back("01110101001001001010001001000010");
+    asciiMap.push_back("01010101111101111010101111010110");
+    asciiMap.push_back("01010111001001111111101001010110");
+    asciiMap.push_back("01010111011101001010101001010110");
+    asciiMap.push_back("01010101001001111010101111010110");
+    asciiMap.push_back("01011101111101001111111001010110");
+    asciiMap.push_back("01000000001111000010001001000110");
+    asciiMap.push_back("01111111111111001111101111111110");
+    asciiMap.push_back("01111101001111111010101000000110");
+    asciiMap.push_back("01111101000100001010101011111110");
+    asciiMap.push_back("01001001011111111010101010000010");
+    asciiMap.push_back("01011101010100001111101010111110");
+    asciiMap.push_back("01011101010101111000111111111110");
+    asciiMap.push_back("01011101010101111111101010111110");
+    asciiMap.push_back("01000001010001000000001010000010");
+    asciiMap.push_back("01111111111111111111111111111110");
+    asciiMap.push_back("00000000000000000000000000000000");
 
 
     NodeMap nodeMap;
-    int cellSize = 85;
+    int cellSize = 50;
     int agentMoveSpeed = cellSize * 2.5;
     nodeMap.Init(asciiMap, cellSize);
 

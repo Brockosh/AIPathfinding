@@ -148,6 +148,7 @@
     <ClCompile Include="DistanceCondition.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FollowBehaviour.cpp" />
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="GoToPointBehaviour.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="AIE_Starter.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="DistanceCondition.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FollowBehaviour.h" />
+    <ClInclude Include="Food.h" />
     <ClInclude Include="GoToPointBehaviour.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="NodeMap.h" />

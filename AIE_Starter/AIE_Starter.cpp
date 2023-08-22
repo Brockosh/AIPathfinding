@@ -16,6 +16,7 @@
 #include "FiniteStateMachine.h"
 #include "Decision.h"
 #include "ABDecision.h"
+#include "Food.h"
 
 using namespace AIForGames;
 
@@ -65,10 +66,10 @@ int main(int argc, char* argv[])
     asciiMap.push_back("01110101001001001010001001000010");
     asciiMap.push_back("01010101111101111010101111010110");
     asciiMap.push_back("01010111001001111111101001010110");
-    asciiMap.push_back("01010111011101001010101001010110");
+    asciiMap.push_back("01010111011101001010101001110110");
     asciiMap.push_back("01010101001001111010101111010110");
     asciiMap.push_back("01011101111101001111111001010110");
-    asciiMap.push_back("01001000001111000010001001000110");
+    asciiMap.push_back("01001000001111000010001001010110");
     asciiMap.push_back("01111111111111001111101111111110");
     asciiMap.push_back("01111101001111111010101000000110");
     asciiMap.push_back("01111101000100001010101011111110");
@@ -93,24 +94,49 @@ int main(int argc, char* argv[])
 
     //Color pathColor = { 255, 255, 255, 255 };
 
+    Food food(&nodeMap);
+
     Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
 
 
-    DistanceCondition* closerThan2 = new DistanceCondition(2.0f * nodeMap.GetCellSize(), true);
+    DistanceCondition* closerThan5 = new DistanceCondition(5.0f * nodeMap.GetCellSize(), true);
     DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
 
 
-    State* wanderState = new State(new WanderBehaviour());
-    State* followState = new State(new FollowBehaviour());
+    /*State* wanderState = new State(new WanderBehaviour());
+    State* followState = new State(new FollowBehaviour());*/
 
-    wanderState->AddTransition(closerThan2, followState);
-    followState->AddTransition(furtherThan4, wanderState);
+    /*wanderState->AddTransition(closerThan2, followState);
+    followState->AddTransition(furtherThan4, wanderState);*/
 
-    FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
-    //fsm->AddState(wanderState);
-    fsm->AddState(followState);
+    //FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
+    ////fsm->AddState(wanderState);
+    //fsm->AddState(followState);
 
-    Agent agentFSM(&nodeMap, fsm, nodeMap.GetRandomNode(), agentMoveSpeed / 2, GREEN, &myAgent);
+    //Agent agentFSM(&nodeMap, fsm, nodeMap.GetRandomNode(), agentMoveSpeed / 2, GREEN, &myAgent);
+
+    DecisionBehaviour* followDecision = new DecisionBehaviour(new FollowBehaviour());
+    DecisionBehaviour* wanderDecision = new DecisionBehaviour(new WanderBehaviour());
+
+    ABDecision* rootDecision1 = new ABDecision();
+    rootDecision1->condition = closerThan5;
+    rootDecision1->A = followDecision;  // Follow if condition is true
+    rootDecision1->B = wanderDecision;
+
+    ABDecision* rootDecision2 = new ABDecision();
+    rootDecision2->condition = closerThan5;
+    rootDecision2->A = followDecision;  // Follow if condition is true
+    rootDecision2->B = wanderDecision;
+
+    ABDecision* rootDecision3 = new ABDecision();
+    rootDecision3->condition = closerThan5;
+    rootDecision3->A = followDecision;  // Follow if condition is true
+    rootDecision3->B = wanderDecision;
+
+
+    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed, GREEN, &myAgent);
+    Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed, BLUE, &myAgent);
+    Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed, ORANGE, &myAgent);
 
 
     //////////////////////////
@@ -133,7 +159,12 @@ int main(int argc, char* argv[])
         // UPDATE
         //----------------------------------------------------------------------------------
         myAgent.Update(deltaTime);
-        agentFSM.Update(deltaTime);
+        rootDecision1->MakeDecision(&agent1, deltaTime);
+        agent1.Update(deltaTime);
+        rootDecision2->MakeDecision(&agent2, deltaTime);
+        agent2.Update(deltaTime);
+        rootDecision3->MakeDecision(&agent3, deltaTime);
+        agent3.Update(deltaTime);
       
 
         // Draw
@@ -143,11 +174,17 @@ int main(int argc, char* argv[])
         ClearBackground(BLACK);
 
         myAgent.Draw();
-        agentFSM.Draw();
+        agent1.Draw();
+        agent2.Draw();
+        agent3.Draw();
         nodeMap.Draw();
 
+        food.Update();
+
         DrawPath(myAgent.GetPath(), WHITE);
-        DrawPath(agentFSM.GetPath(), GREEN);
+        DrawPath(agent1.GetPath(), GREEN);
+        DrawPath(agent2.GetPath(), BLUE);
+        DrawPath(agent3.GetPath(), ORANGE);
      
 
 

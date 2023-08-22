@@ -9,19 +9,19 @@ void Agent::Reset()
 	pathAgent.path.clear();
 }
 
-//void Agent::Update(float deltaTime)
-//{
-//	if (current != nullptr)
-//		current->Update(this, deltaTime);
-//	pathAgent.Update(deltaTime);
-//}
-
 void Agent::Update(float deltaTime)
 {
-	if (decisionRoot != nullptr)
-		decisionRoot->MakeDecision(this, deltaTime);
+	if (current != nullptr)
+		current->Update(this, deltaTime);
 	pathAgent.Update(deltaTime);
 }
+
+//void Agent::Update(float deltaTime)
+//{
+//	if (decisionRoot != nullptr)
+//		decisionRoot->MakeDecision(this, deltaTime);
+//	pathAgent.Update(deltaTime);
+//}
 
 void Agent::Draw()
 {
@@ -32,5 +32,5 @@ void Agent::GoTo(glm::vec2 pos)
 {
 	Node* end = nodeMap->GetClosestNode(pos);
 	pathAgent.SetNode(nodeMap->GetClosestNode(pathAgent.GetPosition()));
-	pathAgent.SetDestination(end);
+	pathAgent.SetDestination(end, nodeMap);
 }

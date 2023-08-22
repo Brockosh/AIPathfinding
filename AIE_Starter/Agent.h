@@ -8,7 +8,7 @@ class Agent
 
 public:
 	Agent();
-	/*Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
+	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
 	{
 		current = behaviour;
 		this->nodeMap = nodeMap;
@@ -17,7 +17,7 @@ public:
 		this->targetAgent = targetAgent;
 		color = agentColor;
 		current->Enter(this);
-	}*/
+	}
 
 	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
 	{
@@ -30,9 +30,9 @@ public:
 		// Initialization or entry calls for behaviours would now be in your decision tree structure
 	}
 
-	//~Agent() { delete current; }
+	~Agent() { delete current; delete decisionRoot; }
 
-	~Agent() { delete decisionRoot; }
+	//~Agent() { delete decisionRoot; }
 
 
 	//My additions
@@ -58,7 +58,7 @@ public:
 
 	void SetColor(Color color) { this->color = color; }
 
-	Decision* GetDecisionRoot() { return decisionRoot; }
+	//Decision* GetDecisionRoot() { return decisionRoot; }
 
 private:
 	PathAgent pathAgent;

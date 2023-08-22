@@ -1,6 +1,6 @@
 #pragma once
 
-class Agent {};
+class Agent ;
 class Decision
 {
 public:

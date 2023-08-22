@@ -1,5 +1,6 @@
 #include "PathAgent.h"
 
+
 void PathAgent::Update(float deltaTime)
 {
 	if (path.empty()) return;
@@ -34,10 +35,10 @@ void PathAgent::Update(float deltaTime)
 
 }
 
-void PathAgent::SetDestination(Node* node)
+void PathAgent::SetDestination(Node* node, NodeMap* nodeMap)
 {
 	path = NodeMap::DijkstrasSearch(currentNode, node);
-	//path = nodeMap->SmoothPath(path);
+	path = nodeMap->SmoothPath(path);
 	currentIndex = 0;
 }
 

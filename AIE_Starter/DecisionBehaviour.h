@@ -1,18 +1,33 @@
+//#pragma once
+//#include "Behaviour.h"
+//#include "Decision.h"
+//class DecisionBehaviour :
+//    public Behaviour
+//{
+//private:
+//    Decision* thisDecision;
+//
+//public:
+//    DecisionBehaviour(Decision* decision) : thisDecision(decision) {}
+//
+//    virtual void Update(Agent* agent, float deltaTime) override 
+//    {
+//        thisDecision->MakeDecision(agent, deltaTime);
+//    }
+//};
 #pragma once
 #include "Behaviour.h"
 #include "Decision.h"
-class DecisionBehaviour :
-    public Behaviour
-{
+
+class DecisionBehaviour : public Decision {
 private:
-    Decision* thisDecision;
+    Behaviour* thisBehaviour;
 
 public:
-    DecisionBehaviour(Decision* decision) : thisDecision(decision) {}
+    DecisionBehaviour(Behaviour* behaviour) : thisBehaviour(behaviour) {}
 
-    virtual void Update(Agent* agent, float deltaTime) override 
+    virtual void MakeDecision(Agent* agent, float deltaTime) override
     {
-        thisDecision->MakeDecision(agent, deltaTime);
+        thisBehaviour->Update(agent, deltaTime);
     }
 };
-

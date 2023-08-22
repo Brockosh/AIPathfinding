@@ -18,7 +18,8 @@ private:
 public:
 	std::vector<Node*> path;
 	void Update(float deltaTime);
-	void SetDestination(Node* node);
+	void SetDestination(Node* node, NodeMap* nodeMap);
+	//void SetDestination(Node* node, Agent* agent);
 	void Draw();
 	void SetNode(Node* node) { currentNode = node; position = node->position; }
 	void SetSpeed(float speed) { this->speed = speed; }

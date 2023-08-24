@@ -24,7 +24,9 @@ Food::Food(NodeMap* nm)
 //}
 
 
-	void Food::Update()
-	{
-		DrawCircle(position.x, position.y, 10, WHITE);
-	}
+void Food::Update()
+{
+    if (!isEaten) {
+        DrawCircle(position.x, position.y, 10, WHITE);
+    }
+}

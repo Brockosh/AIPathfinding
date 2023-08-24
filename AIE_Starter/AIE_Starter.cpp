@@ -17,6 +17,8 @@
 #include "Decision.h"
 #include "ABDecision.h"
 #include "Food.h"
+#include "FoodSpawner.h"
+#include "FoodTracker.h"
 
 using namespace AIForGames;
 
@@ -94,10 +96,13 @@ int main(int argc, char* argv[])
 
     //Color pathColor = { 255, 255, 255, 255 };
 
-    Food food(&nodeMap);
+    //Food food(&nodeMap);
+    FoodSpawner foodSpawner(&nodeMap);
+
 
     Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, false, YELLOW);
 
+    FoodTracker foodTracker(&myAgent, &foodSpawner, &nodeMap);
 
     DistanceCondition* closerThan5 = new DistanceCondition(5.0f * nodeMap.GetCellSize(), true);
     DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
@@ -179,7 +184,8 @@ int main(int argc, char* argv[])
         agent3.Draw();
         nodeMap.Draw();
 
-        food.Update();
+        foodSpawner.UpdateAllFoods();
+        foodTracker.Update();
 
         DrawPath(myAgent.GetPath(), WHITE);
         DrawPath(agent1.GetPath(), GREEN);

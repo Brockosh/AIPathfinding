@@ -1,7 +1,2 @@
-﻿  AIE_Starter.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(87,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(99,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(137,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(138,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(139,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  FoodTracker.cpp
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

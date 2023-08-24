@@ -63,6 +63,8 @@ public:
 
 	void SetColor(Color color) { this->color = color; }
 
+	bool IsPlayerAgent() { return isPlayerAgent; }
+
 	//Decision* GetDecisionRoot() { return decisionRoot; }
 
 private:

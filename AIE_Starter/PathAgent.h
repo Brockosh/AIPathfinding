@@ -22,6 +22,8 @@ public:
 	//void SetDestination(Node* node, Agent* agent);
 	void Draw();
 	void SetNode(Node* node) { currentNode = node; position = node->position; }
+	//Attempted fix but noticing weird movement occasionally
+	//void SetNode(Node* node);
 	void SetSpeed(float speed) { this->speed = speed; }
 
 

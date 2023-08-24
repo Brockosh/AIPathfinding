@@ -8,7 +8,7 @@ class Agent
 
 public:
 	Agent();
-	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
+	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, bool isPlayer, Color agentColor, Agent* targetAgent = nullptr)
 	{
 		current = behaviour;
 		this->nodeMap = nodeMap;
@@ -17,9 +17,11 @@ public:
 		this->targetAgent = targetAgent;
 		color = agentColor;
 		current->Enter(this);
+		agentTexture = LoadTexture("MyImages/PlayerBird.png");
+		isPlayerAgent = isPlayer;
 	}
 
-	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, float speed, Color agentColor = YELLOW, Agent* targetAgent = nullptr)
+	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, float speed, bool isPlayer, Color agentColor, Agent* targetAgent = nullptr)
 	{
 		this->decisionRoot = decisionRoot;
 		this->nodeMap = nodeMap;
@@ -27,10 +29,13 @@ public:
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
 		color = agentColor;
+		agentTexture = LoadTexture("MyImages/PlayerBird.png");
+		isPlayerAgent = isPlayer;
 		// Initialization or entry calls for behaviours would now be in your decision tree structure
 	}
 
-	~Agent() { delete current; delete decisionRoot; }
+	~Agent() { delete current; delete decisionRoot; UnloadTexture(agentTexture);
+	}
 
 	//~Agent() { delete decisionRoot; }
 
@@ -67,5 +72,7 @@ private:
 	Color color;
 	Agent* targetAgent;
 	Decision* decisionRoot;
+	Texture2D agentTexture;
+	bool isPlayerAgent;
 };
 

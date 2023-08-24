@@ -46,3 +46,18 @@ void PathAgent::Draw()
 {
 	DrawCircle((int)position.x, (int)position.y, 12, YELLOW);
 }
+
+//void PathAgent::SetNode(Node* node)
+//{
+//	//void SetNode(Node * node) { currentNode = node; position = node->position; }
+//
+//	if (node)
+//	{
+//		currentNode = node;
+//		position = node->position;
+//	}
+//	else
+//	{
+//
+//	}
+//}

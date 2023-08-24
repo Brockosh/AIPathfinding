@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 
     Food food(&nodeMap);
 
-    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed); 
+    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, false, YELLOW);
 
 
     DistanceCondition* closerThan5 = new DistanceCondition(5.0f * nodeMap.GetCellSize(), true);
@@ -134,9 +134,9 @@ int main(int argc, char* argv[])
     rootDecision3->B = wanderDecision;
 
 
-    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed, GREEN, &myAgent);
-    Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed, BLUE, &myAgent);
-    Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed, ORANGE, &myAgent);
+    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed, false, GREEN, &myAgent);
+    Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed, false, BLUE, &myAgent);
+    Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed, false, ORANGE, &myAgent);
 
 
     //////////////////////////

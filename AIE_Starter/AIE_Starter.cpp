@@ -19,6 +19,8 @@
 #include "Food.h"
 #include "FoodSpawner.h"
 #include "FoodTracker.h"
+#include "PlayerScore.h"
+#include "ScoreTracker.h"
 
 using namespace AIForGames;
 
@@ -86,7 +88,7 @@ int main(int argc, char* argv[])
 
     NodeMap nodeMap;
     int cellSize = 50;
-    int agentMoveSpeed = cellSize * 2.5;
+    int agentMoveSpeed = cellSize * 3.5;
     nodeMap.Init(asciiMap, cellSize);
 
 #pragma endregion
@@ -97,10 +99,10 @@ int main(int argc, char* argv[])
     //Color pathColor = { 255, 255, 255, 255 };
 
     //Food food(&nodeMap);
-    FoodSpawner foodSpawner(&nodeMap);
+    FoodSpawner foodSpawner(&nodeMap, 8);
 
 
-    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, false, YELLOW);
+    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, true, YELLOW);
 
     FoodTracker foodTracker(&myAgent, &foodSpawner, &nodeMap);
 
@@ -125,24 +127,26 @@ int main(int argc, char* argv[])
 
     ABDecision* rootDecision1 = new ABDecision();
     rootDecision1->condition = closerThan5;
-    rootDecision1->A = followDecision;  // Follow if condition is true
+    rootDecision1->A = followDecision;  
     rootDecision1->B = wanderDecision;
 
     ABDecision* rootDecision2 = new ABDecision();
     rootDecision2->condition = closerThan5;
-    rootDecision2->A = followDecision;  // Follow if condition is true
+    rootDecision2->A = followDecision; 
     rootDecision2->B = wanderDecision;
 
     ABDecision* rootDecision3 = new ABDecision();
     rootDecision3->condition = closerThan5;
-    rootDecision3->A = followDecision;  // Follow if condition is true
+    rootDecision3->A = followDecision; 
     rootDecision3->B = wanderDecision;
 
 
-    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed, false, GREEN, &myAgent);
-    Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed, false, BLUE, &myAgent);
-    Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed, false, ORANGE, &myAgent);
+    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, GREEN, &myAgent);
+    Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, BLUE, &myAgent);
+    Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, ORANGE, &myAgent);
 
+    PlayerScore playerScore;
+    ScoreTracker scoreTracker(&foodSpawner, &playerScore);
 
     //////////////////////////
 
@@ -186,6 +190,8 @@ int main(int argc, char* argv[])
 
         foodSpawner.UpdateAllFoods();
         foodTracker.Update();
+        scoreTracker.Update();
+        playerScore.Update();
 
         DrawPath(myAgent.GetPath(), WHITE);
         DrawPath(agent1.GetPath(), GREEN);

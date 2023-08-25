@@ -10,6 +10,7 @@ namespace AIForGames
     struct Edge {
         Node* target;
         float cost;
+        
 
         Edge() { target = nullptr; cost = 0; }
         Edge(Node* _target, float _cost) : target(_target), cost(_cost) {}
@@ -21,6 +22,8 @@ namespace AIForGames
 
         float gScore;
         Node* previous;
+
+
 
         Node(float x, float y)
         {

@@ -56,6 +56,7 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 	this->cellSize = cellSize;
 	const char emptySquare = '0';
 
+
 	height = asciiMap.size();
 	width = asciiMap[0].size();
 
@@ -89,10 +90,18 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 			ConnectWestAndSouth(x, y);
 		}
 	}
+
+	if (!cloudTexture) 
+	{
+		cloudTexture = new Texture2D;
+		*cloudTexture = LoadTexture("MyImages/Cloud.png");
+	}
 }
 
 void NodeMap::Draw()
 {
+	
+
 	Color cellColor{ 255, 0, 0, 255 };
 	Color lineColor{ 255, 0, 0, 255 };
 
@@ -103,7 +112,11 @@ void NodeMap::Draw()
 			Node* node = GetNode(x, y);
 			if (node == nullptr) 
 			{
-				DrawRectangle((int)(x * cellSize), (int)(y * cellSize), (int)cellSize - 1, (int)cellSize - 1, cellColor);
+				//DrawRectangle((int)(x * cellSize), (int)(y * cellSize), 
+				//(int)cellSize - 1, (int)cellSize - 1, cellColor);
+				DrawTexture(*cloudTexture, (int)(x * cellSize), (int)(y * cellSize), WHITE);
+				
+
 				continue;
 			}
 
@@ -134,10 +147,12 @@ Node* NodeMap::GetClosestNode(glm::vec2 worldPos)
 	int j = (int)(worldPos.y / cellSize);
 	if (j < 0 || j >= height) return nullptr;
 
-	Node* node = GetNode(i, j);
-	if (node == nullptr) return nullptr; // Return nullptr if the node is non-navigable
+	return GetNode(i, j);
 
-	return node;
+	//Node* node = GetNode(i, j);
+	////if (node == nullptr) return nullptr; // Return nullptr if the node is non-navigable
+
+	//return node;
 }
 
 

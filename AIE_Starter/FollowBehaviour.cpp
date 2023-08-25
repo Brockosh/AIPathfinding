@@ -13,7 +13,11 @@ void FollowBehaviour::Update(Agent* agent, float deltaTime)
 	if (dist >= agent->GetNodeMap()->GetCellSize())
 	{
 		//lastTargetPosition = target->GetPosition();
-		lastTargetPosition = agent->GetNodeMap()->GetClosestNode(target->GetPosition())->position;
+		Node* node = agent->GetNodeMap()->GetClosestNode(target->GetPosition());
+
+		if (node == nullptr) { return; }
+
+		lastTargetPosition = node->position;
 		agent->GoTo(lastTargetPosition);
 	}
 

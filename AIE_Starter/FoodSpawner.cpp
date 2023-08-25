@@ -1,7 +1,7 @@
 #include "FoodSpawner.h"
-FoodSpawner::FoodSpawner(NodeMap* nm) : nodeMap(nm) 
+FoodSpawner::FoodSpawner(NodeMap* nm, int foodCount) : nodeMap(nm), desiredFoodCount(foodCount)
 {
-    SpawnFood(4);
+    SpawnFood(desiredFoodCount);
 }
 
 FoodSpawner::~FoodSpawner() {
@@ -11,11 +11,29 @@ FoodSpawner::~FoodSpawner() {
 }
 
 void FoodSpawner::SpawnFood(int amount) {
-    for (int i = 0; i < amount; ++i) 
+    for (int i = 0; i < amount; ++i)
     {
         Food* newFood = new Food(nodeMap);
+        
+        while (IsPositionOccupied(newFood->position))
+        {
+            delete newFood;
+            newFood = new Food(nodeMap);
+        }
         foods.push_back(newFood);
     }
+}
+
+bool FoodSpawner::IsPositionOccupied(glm::vec2& position)
+{
+    for (Food* food : foods)
+    {
+        if (food->position == position)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void FoodSpawner::RemoveEatenFoods() {
@@ -30,7 +48,13 @@ void FoodSpawner::RemoveEatenFoods() {
     }
 }
 
-void FoodSpawner::UpdateAllFoods() {
+void FoodSpawner::UpdateAllFoods() 
+{
+    if (foods.size() < desiredFoodCount)
+    {
+        SpawnFood(1);
+    }
+
     for (Food* food : foods) {
         food->Update();
     }

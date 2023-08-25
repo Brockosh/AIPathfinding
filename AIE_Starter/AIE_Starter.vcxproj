@@ -156,6 +156,8 @@
     <ClCompile Include="AIE_Starter.cpp" />
     <ClCompile Include="NodeMap.cpp" />
     <ClCompile Include="Pathfinding.cpp" />
+    <ClCompile Include="PlayerScore.cpp" />
+    <ClCompile Include="ScoreTracker.cpp" />
     <ClCompile Include="SelectorBehaviour.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="WanderBehaviour.cpp" />
@@ -180,6 +182,8 @@
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="NodeMap.h" />
     <ClInclude Include="Pathfinding.h" />
+    <ClInclude Include="PlayerScore.h" />
+    <ClInclude Include="ScoreTracker.h" />
     <ClInclude Include="SelectorBehaviour.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="WanderBehaviour.h" />

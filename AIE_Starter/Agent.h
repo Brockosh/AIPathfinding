@@ -8,7 +8,8 @@ class Agent
 
 public:
 	Agent();
-	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, float speed, bool isPlayer, Color agentColor, Agent* targetAgent = nullptr)
+	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, 
+		float speed, bool isPlayer, Color agentColor, Agent* targetAgent = nullptr)
 	{
 		current = behaviour;
 		this->nodeMap = nodeMap;
@@ -21,7 +22,8 @@ public:
 		isPlayerAgent = isPlayer;
 	}
 
-	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, float speed, bool isPlayer, Color agentColor, Agent* targetAgent = nullptr)
+	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, 
+		float speed, bool isPlayer, Color agentColor, Agent* targetAgent = nullptr)
 	{
 		this->decisionRoot = decisionRoot;
 		this->nodeMap = nodeMap;

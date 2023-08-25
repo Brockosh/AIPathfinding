@@ -2,7 +2,7 @@
 #include "Pathfinding.h"
 #include <string>
 #include <iostream>
-#include <raygui.h>
+#include <raylib.h>
 
 using namespace AIForGames;
 
@@ -14,6 +14,7 @@ class NodeMap
 	Node* start;
 	Node* end;
 
+	Texture2D* cloudTexture;
 
 	void ConnectWestAndSouth(int x, int y);
 	static bool NodeInList(std::vector<Node*> list);

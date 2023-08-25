@@ -125,6 +125,13 @@ int main(int argc, char* argv[])
     DecisionBehaviour* followDecision = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision = new DecisionBehaviour(new WanderBehaviour());
 
+    DecisionBehaviour* followDecision1 = new DecisionBehaviour(new FollowBehaviour());
+    DecisionBehaviour* wanderDecision1 = new DecisionBehaviour(new WanderBehaviour());
+
+    DecisionBehaviour* followDecision2 = new DecisionBehaviour(new FollowBehaviour());
+    DecisionBehaviour* wanderDecision2 = new DecisionBehaviour(new WanderBehaviour());
+
+
     ABDecision* rootDecision1 = new ABDecision();
     rootDecision1->condition = closerThan5;
     rootDecision1->A = followDecision;  
@@ -132,13 +139,13 @@ int main(int argc, char* argv[])
 
     ABDecision* rootDecision2 = new ABDecision();
     rootDecision2->condition = closerThan5;
-    rootDecision2->A = followDecision; 
-    rootDecision2->B = wanderDecision;
+    rootDecision2->A = followDecision1; 
+    rootDecision2->B = wanderDecision1;
 
     ABDecision* rootDecision3 = new ABDecision();
     rootDecision3->condition = closerThan5;
-    rootDecision3->A = followDecision; 
-    rootDecision3->B = wanderDecision;
+    rootDecision3->A = followDecision2; 
+    rootDecision3->B = wanderDecision2;
 
 
     Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, GREEN, &myAgent);

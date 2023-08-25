@@ -91,17 +91,15 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 		}
 	}
 
-	if (!cloudTexture) 
-	{
-		cloudTexture = new Texture2D;
+	/*if (cloudTexture == nullptr) 
+	{*/
+		cloudTexture = new Texture2D();
 		*cloudTexture = LoadTexture("MyImages/Cloud.png");
-	}
+	//}
 }
 
 void NodeMap::Draw()
 {
-	
-
 	Color cellColor{ 255, 0, 0, 255 };
 	Color lineColor{ 255, 0, 0, 255 };
 
@@ -114,7 +112,11 @@ void NodeMap::Draw()
 			{
 				//DrawRectangle((int)(x * cellSize), (int)(y * cellSize), 
 				//(int)cellSize - 1, (int)cellSize - 1, cellColor);
-				DrawTexture(*cloudTexture, (int)(x * cellSize), (int)(y * cellSize), WHITE);
+				Vector2 cloudPos = { x * cellSize, y * cellSize };
+				cloudPos.x = (int)cloudPos.x;
+				cloudPos.y = (int)cloudPos.y;
+
+				DrawTextureEx(*cloudTexture, cloudPos, 0, 0.05f, WHITE);
 				
 
 				continue;

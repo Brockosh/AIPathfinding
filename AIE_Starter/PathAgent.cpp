@@ -20,7 +20,8 @@ void PathAgent::Update(float deltaTime)
 
 	if (currentIndex >= path.size())
 	{
-		position = path[path.size() - 1]->position;
+		//Maybe add back in
+		//position = path[path.size() - 1]->position;
 
 		path.clear();
 
@@ -38,6 +39,7 @@ void PathAgent::Update(float deltaTime)
 void PathAgent::SetDestination(Node* node, NodeMap* nodeMap)
 {
 	path = NodeMap::DijkstrasSearch(currentNode, node);
+	//path = NodeMap::DijkstrasSearch(new Node(position.x, position.y), node);
 	path = nodeMap->SmoothPath(path);
 	currentIndex = 0;
 }

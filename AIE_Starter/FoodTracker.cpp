@@ -21,7 +21,7 @@ bool FoodTracker::IsEatenByAgent(Agent* agent, Food* food)
     glm::vec2 distanceVec = agent->GetPosition() - food->position;
     float distance = glm::length(distanceVec);
 
-    if (agent->IsPlayerAgent() && distance < 2)  // You decide the threshold
+    if (agent->IsPlayerAgent() && distance < 4)  // You decide the threshold
     {
         food->SetEatenStatus(true);
         std::cout << "Get eaten brother" << std::endl;

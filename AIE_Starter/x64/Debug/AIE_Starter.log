@@ -1,7 +1,2 @@
-﻿  NodeMap.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(56,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(60,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(61,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(126,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(126,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  PathAgent.cpp
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

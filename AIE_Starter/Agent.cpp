@@ -25,15 +25,17 @@ void Agent::Update(float deltaTime)
 
 void Agent::Draw()
 {
-	//if (!isPlayerAgent)
-	DrawCircle((int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, 12, color);
-	/*DrawTexture(agentTexture, (int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, WHITE);*/
-	/*else
+		DrawCircle((int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, 12, color);
+	if (!isPlayerAgent)
 	{
-		Vector2 position = { pathAgent.GetPosition().x - agentTexture.width * 0.5f + 2, pathAgent.GetPosition().y - agentTexture.height * 0.5f + 2 };
-		float scale = 0.2f;
-		DrawTextureEx(agentTexture, position, 0.0f, scale, WHITE);
-	}*/
+		//DrawTexture(agentTexture, (int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, WHITE);
+	}
+	else
+	{
+		/*float scale = 0.2f;
+		Vector2 position = { pathAgent.GetPosition().x - agentTexture.width * 0.5f * scale, pathAgent.GetPosition().y - agentTexture.height * 0.5f * scale };
+		DrawTextureEx(agentTexture, position, 0.0f, scale, WHITE);*/
+	}
 }
 
 void Agent::GoTo(glm::vec2 pos)
@@ -45,6 +47,6 @@ void Agent::GoTo(glm::vec2 pos)
 
 	if (node == nullptr) { return; }
 
-	pathAgent.SetNode(node);
+	pathAgent.SetCurrentNode(node);
 	pathAgent.SetDestination(end, nodeMap);
 }

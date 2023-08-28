@@ -13,6 +13,7 @@ class NodeMap
 	Node** nodes;
 	Node* start;
 	Node* end;
+	//std::vector<Node*> occupiedNodes;
 
 	Texture2D* cloudTexture;
 
@@ -28,6 +29,7 @@ public:
 	Node* GetClosestNode(glm::vec2 worldPos);
 	static std::vector<Node*>DijkstrasSearch(Node* startNode, Node* endNode);
 	Node* GetRandomNode();
+	Node* GetRandomStartingNode();
 	float GetCellSize() { return cellSize; }
 	std::vector<Node*> SmoothPath(std::vector<Node*> path);
 };

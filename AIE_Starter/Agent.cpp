@@ -32,9 +32,9 @@ void Agent::Draw()
 	}
 	else
 	{
-		/*float scale = 0.2f;
+		float scale = 0.2f;
 		Vector2 position = { pathAgent.GetPosition().x - agentTexture.width * 0.5f * scale, pathAgent.GetPosition().y - agentTexture.height * 0.5f * scale };
-		DrawTextureEx(agentTexture, position, 0.0f, scale, WHITE);*/
+		DrawTextureEx(agentTexture, position, 0.0f, scale, WHITE);
 	}
 }
 

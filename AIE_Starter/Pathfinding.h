@@ -22,6 +22,7 @@ namespace AIForGames
 
         float gScore;
         Node* previous;
+        bool isOccupied;
 
 
 
@@ -36,6 +37,9 @@ namespace AIForGames
         {
             connections.push_back(Edge(other, cost));
         }
+
+        void UpdateOccupiedStatus(bool status) { isOccupied = status; }
+        bool GetOccupiedStatus() { return isOccupied; }
 
     };
       

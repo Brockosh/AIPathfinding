@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 
     asciiMap.push_back("00000000000000000000000000000000");
     asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01110001111111001111110001111110");
+    asciiMap.push_back("01110101111111001111110001111110");
     asciiMap.push_back("01110101001001001010001001000010");
     asciiMap.push_back("01010101111101111010101111010110");
     asciiMap.push_back("01010111001001111111101001010110");
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
     asciiMap.push_back("01111111111111001111101111111110");
     asciiMap.push_back("01111101001111111010101000000110");
     asciiMap.push_back("01111101000100001010101011111110");
-    asciiMap.push_back("01001001011111111010101010000010");
+    asciiMap.push_back("01001001011111111010101010010010");
     asciiMap.push_back("01011101010100001111101010111110");
     asciiMap.push_back("01111111011101111000111111111110");
     asciiMap.push_back("01011101010101111111101010111110");
@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 
 #pragma endregion
 
-    Node* start = nodeMap.GetNode(1, 1);
+    Node* start = nodeMap.GetRandomNode();
     //Node* end = nodeMap.GetNode(10, 2);
 
     //Color pathColor = { 255, 255, 255, 255 };
@@ -187,7 +187,7 @@ int main(int argc, char* argv[])
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        ClearBackground(BLACK);
+        ClearBackground({ 135, 206, 235 });
 
         myAgent.Draw();
         agent1.Draw();

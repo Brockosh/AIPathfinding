@@ -112,6 +112,14 @@ void NodeMap::Draw()
 			{
 				//DrawRectangle((int)(x * cellSize), (int)(y * cellSize), 
 				//(int)cellSize - 1, (int)cellSize - 1, cellColor);
+
+				//float scaleToSquare = (float)cellSize / std::max(cloudTexture->width, cloudTexture->height);
+
+
+
+
+
+
 				Vector2 cloudPos = { x * cellSize, y * cellSize };
 				cloudPos.x = (int)cloudPos.x;
 				cloudPos.y = (int)cloudPos.y;
@@ -241,6 +249,29 @@ Node* NodeMap::GetRandomNode()
 	return node;
 }
 
+Node* NodeMap::GetRandomStartingNode()
+{
+	int attemptCounter = 0;
+	int maxAttempts = 100;
+
+	Node* node = nullptr;
+	while (node == nullptr && attemptCounter < maxAttempts)
+	{
+		int x = rand() % width;
+		int y = rand() % height;
+
+		node = GetNode(x, y);
+
+		if (node != nullptr && !node->GetOccupiedStatus())
+		{
+			return node;
+		}
+		attemptCounter++;
+	}
+	std::cout << "No available node\n" << std::endl;
+	return nullptr;
+}
+
 //bool NodeMap::IsVisible(Node* start, Node* end)
 //{
 //	// calculate a vector from start to end that is one cellsize in length
@@ -292,7 +323,7 @@ bool NodeMap::IsVisible(Node* start, Node* end)
 
 std::vector<Node*> NodeMap::SmoothPath(std::vector<Node*> path)
 {
-	if (path.empty()) return path; // Return early if path is empty.
+	if (path.empty()) return path; 
 
 	std::vector<Node*> smoothedPath;
 	Node* currentNode = path[0];

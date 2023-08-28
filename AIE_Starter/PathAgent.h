@@ -21,9 +21,17 @@ public:
 	void SetDestination(Node* node, NodeMap* nodeMap);
 	//void SetDestination(Node* node, Agent* agent);
 	void Draw();
-	void SetNode(Node* node) { currentNode = node; position = node->position; }
+	void SetNode(Node* node) 
+	{
+		currentNode = node; position = node->position; 
+		//node->UpdateOccupiedStatus(true);
+	}
 	
-	void SetCurrentNode(Node* node) { currentNode = node; } 
+	void SetCurrentNode(Node* node) 
+	{ 
+		currentNode = node; 
+		node->UpdateOccupiedStatus(true);
+	} 
 
 	//Attempted fix but noticing weird movement occasionally
 	//void SetNode(Node* node);

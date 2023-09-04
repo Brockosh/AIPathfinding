@@ -4,7 +4,6 @@
 #include <algorithm>
 
 
-
 void NodeMap::ConnectWestAndSouth(int x, int y)
 {
 	Node* node = GetNode(x, y);
@@ -46,9 +45,6 @@ void NodeMap::ConnectWestAndSouth(int x, int y)
 	}
 
 }
-
-
-
 
 
 void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
@@ -100,8 +96,8 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 
 void NodeMap::Draw()
 {
-	Color cellColor{ 255, 0, 0, 255 };
-	Color lineColor{ 255, 0, 0, 255 };
+	Color cellColor{ WHITE };
+	Color lineColor{ DARKBLUE };
 
 	for (int y = 0; y < height; y++)
 	{
@@ -110,22 +106,18 @@ void NodeMap::Draw()
 			Node* node = GetNode(x, y);
 			if (node == nullptr) 
 			{
-				//DrawRectangle((int)(x * cellSize), (int)(y * cellSize), 
-				//(int)cellSize - 1, (int)cellSize - 1, cellColor);
+				DrawRectangle((int)(x * cellSize), (int)(y * cellSize), 
+				(int)cellSize - 1, (int)cellSize - 1, cellColor);
 
 				//float scaleToSquare = (float)cellSize / std::max(cloudTexture->width, cloudTexture->height);
 
 
-
-
-
-
-				Vector2 cloudPos = { x * cellSize, y * cellSize };
+				/*Vector2 cloudPos = { x * cellSize, y * cellSize };
 				cloudPos.x = (int)cloudPos.x;
 				cloudPos.y = (int)cloudPos.y;
 
 				DrawTextureEx(*cloudTexture, cloudPos, 0, 0.05f, WHITE);
-				
+				*/
 
 				continue;
 			}
@@ -245,6 +237,10 @@ Node* NodeMap::GetRandomNode()
 		int y = rand() % height;
 
 		node = GetNode(x, y);
+		if (node == nullptr)
+		{
+			std::cerr << "Error: Random Node at (" << x << "," << y << ") is null!" << std::endl;
+		}
 	}
 	return node;
 }

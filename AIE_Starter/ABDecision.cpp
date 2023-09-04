@@ -5,6 +5,7 @@ void ABDecision::MakeDecision(Agent* agent, float deltaTime)
 	if (condition->IsTrue(agent))
 	{
 		A->MakeDecision(agent, deltaTime);
+		
 		//std::cout << "Decision A chosen" << std::endl;
 	}
 	else 

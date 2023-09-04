@@ -14,6 +14,7 @@ public:
 		current = behaviour;
 		this->nodeMap = nodeMap;
 		pathAgent.SetNode(startingNode);
+		startingPosition = startingNode;
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
 		color = agentColor;
@@ -33,19 +34,13 @@ public:
 		color = agentColor;
 		agentTexture = LoadTexture("MyImages/PlayerBird.png");
 		isPlayerAgent = isPlayer;
-		// Initialization or entry calls for behaviours would now be in your decision tree structure
 	}
 
 	~Agent() { delete current; delete decisionRoot; UnloadTexture(agentTexture);
 	}
 
-	//~Agent() { delete decisionRoot; }
-
-
-	//My additions
 	void Reset();
-
-
+	void MoveToStartingPosition() { pathAgent.SetNode(startingPosition); };
 	void Update(float deltaTime);
 	void Draw();
 	void GoTo(glm::vec2 pos);
@@ -73,6 +68,7 @@ private:
 	PathAgent pathAgent;
 	Behaviour* current;
 	NodeMap* nodeMap;
+	Node* startingPosition;
 	Color color;
 	Agent* targetAgent;
 	Decision* decisionRoot;

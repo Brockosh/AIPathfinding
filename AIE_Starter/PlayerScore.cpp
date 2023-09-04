@@ -5,7 +5,7 @@
 
 void PlayerScore::Update()
 {
-	std::cout << score << "\n";
+	//std::cout << score << "\n";
 	
 	
 	std::string scoreStr = std::to_string(score);

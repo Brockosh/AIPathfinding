@@ -28,6 +28,7 @@ public:
 
     virtual void MakeDecision(Agent* agent, float deltaTime) override
     {
+        thisBehaviour->Enter(agent);
         thisBehaviour->Update(agent, deltaTime);
     }
 };

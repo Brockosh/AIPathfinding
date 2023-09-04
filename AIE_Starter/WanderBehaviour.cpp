@@ -14,4 +14,6 @@ void WanderBehaviour::Update(Agent* agent, float deltaTime)
 void WanderBehaviour::Enter(Agent* agent)
 {
 	agent->SetColor(BLUE);
+
+	
 }

@@ -1,8 +1,7 @@
-﻿  AIE_Starter.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(91,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(105,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(151,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(152,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(153,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  NodeMap.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(56,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(60,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(61,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(132,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(132,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

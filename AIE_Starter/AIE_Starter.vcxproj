@@ -142,6 +142,7 @@
     <ClCompile Include="ABDecision.cpp" />
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Behaviour.cpp" />
+    <ClCompile Include="CollisionTracker.cpp" />
     <ClCompile Include="Condition.cpp" />
     <ClCompile Include="Decision.cpp" />
     <ClCompile Include="DecisionBehaviour.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FoodSpawner.cpp" />
     <ClCompile Include="FoodTracker.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GoToPointBehaviour.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="AIE_Starter.cpp" />
@@ -169,6 +171,7 @@
     <ClInclude Include="ABDecision.h" />
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Behaviour.h" />
+    <ClInclude Include="CollisionTracker.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="Decision.h" />
     <ClInclude Include="DecisionBehaviour.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="Food.h" />
     <ClInclude Include="FoodSpawner.h" />
     <ClInclude Include="FoodTracker.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GoToPointBehaviour.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="NodeMap.h" />

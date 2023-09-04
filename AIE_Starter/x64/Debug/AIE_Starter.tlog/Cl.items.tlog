@@ -1,6 +1,7 @@
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ABDecision.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\ABDecision.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Agent.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\Agent.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Behaviour.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\Behaviour.obj
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\CollisionTracker.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\CollisionTracker.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Condition.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\Condition.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Decision.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\Decision.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\DecisionBehaviour.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\DecisionBehaviour.obj
@@ -10,6 +11,7 @@ C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\FollowBehaviour.cpp;C:\
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Food.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\Food.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\FoodSpawner.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\FoodSpawner.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\FoodTracker.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\FoodTracker.obj
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\GameManager.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\GameManager.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\GoToPointBehaviour.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\GoToPointBehaviour.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\PathAgent.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\PathAgent.obj
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp;C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\x64\Debug\AIE_Starter.obj

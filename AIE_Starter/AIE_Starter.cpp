@@ -21,6 +21,8 @@
 #include "FoodTracker.h"
 #include "PlayerScore.h"
 #include "ScoreTracker.h"
+#include "CollisionTracker.h"
+#include "GameManager.h"
 
 using namespace AIForGames;
 
@@ -55,18 +57,10 @@ int main(int argc, char* argv[])
 
 
     std::vector<std::string> asciiMap;
-    /*asciiMap.push_back("000000000000");
-    asciiMap.push_back("010111011100");
-    asciiMap.push_back("010101110110");
-    asciiMap.push_back("010100000000");
-    asciiMap.push_back("010111111110");
-    asciiMap.push_back("010000001000");
-    asciiMap.push_back("011111111110");
-    asciiMap.push_back("000000000000");*/
 
     asciiMap.push_back("00000000000000000000000000000000");
     asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01110101111111001111110001111110");
+    asciiMap.push_back("01110101111111001111111001111110");
     asciiMap.push_back("01110101001001001010001001000010");
     asciiMap.push_back("01010101111101111010101111010110");
     asciiMap.push_back("01010111001001111111101001010110");
@@ -93,14 +87,11 @@ int main(int argc, char* argv[])
 
 #pragma endregion
 
-    Node* start = nodeMap.GetRandomNode();
-    //Node* end = nodeMap.GetNode(10, 2);
+    int middleRow = asciiMap.size() / 2;
+    int middleColumn = asciiMap[0].length() / 2;
+    Node* start = nodeMap.GetNode(middleColumn, middleRow);
 
-    //Color pathColor = { 255, 255, 255, 255 };
-
-    //Food food(&nodeMap);
     FoodSpawner foodSpawner(&nodeMap, 8);
-
 
     Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, true, YELLOW);
 
@@ -110,50 +101,50 @@ int main(int argc, char* argv[])
     DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
 
 
-    /*State* wanderState = new State(new WanderBehaviour());
-    State* followState = new State(new FollowBehaviour());*/
-
-    /*wanderState->AddTransition(closerThan2, followState);
-    followState->AddTransition(furtherThan4, wanderState);*/
-
-    //FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
-    ////fsm->AddState(wanderState);
-    //fsm->AddState(followState);
-
-    //Agent agentFSM(&nodeMap, fsm, nodeMap.GetRandomNode(), agentMoveSpeed / 2, GREEN, &myAgent);
-
-    DecisionBehaviour* followDecision = new DecisionBehaviour(new FollowBehaviour());
-    DecisionBehaviour* wanderDecision = new DecisionBehaviour(new WanderBehaviour());
-
     DecisionBehaviour* followDecision1 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision1 = new DecisionBehaviour(new WanderBehaviour());
 
     DecisionBehaviour* followDecision2 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision2 = new DecisionBehaviour(new WanderBehaviour());
 
+    DecisionBehaviour* followDecision3 = new DecisionBehaviour(new FollowBehaviour());
+    DecisionBehaviour* wanderDecision3 = new DecisionBehaviour(new WanderBehaviour());
+
+    DecisionBehaviour* followDecision4 = new DecisionBehaviour(new FollowBehaviour());
+    DecisionBehaviour* wanderDecision4 = new DecisionBehaviour(new WanderBehaviour());
+
 
     ABDecision* rootDecision1 = new ABDecision();
     rootDecision1->condition = closerThan5;
-    rootDecision1->A = followDecision;  
-    rootDecision1->B = wanderDecision;
+    rootDecision1->A = followDecision1;  
+    rootDecision1->B = wanderDecision1;
 
     ABDecision* rootDecision2 = new ABDecision();
     rootDecision2->condition = closerThan5;
-    rootDecision2->A = followDecision1; 
-    rootDecision2->B = wanderDecision1;
+    rootDecision2->A = followDecision2; 
+    rootDecision2->B = wanderDecision2;
 
     ABDecision* rootDecision3 = new ABDecision();
     rootDecision3->condition = closerThan5;
-    rootDecision3->A = followDecision2; 
-    rootDecision3->B = wanderDecision2;
+    rootDecision3->A = followDecision3; 
+    rootDecision3->B = wanderDecision3;
+
+    ABDecision* rootDecision4 = new ABDecision();
+    rootDecision4->condition = closerThan5;
+    rootDecision4->A = followDecision4;
+    rootDecision4->B = wanderDecision4;
 
 
-    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, GREEN, &myAgent);
+
+    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, WHITE, &myAgent);
     Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, BLUE, &myAgent);
     Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, ORANGE, &myAgent);
+    Agent agent4(&nodeMap, rootDecision4, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, PURPLE, &myAgent);
 
     PlayerScore playerScore;
     ScoreTracker scoreTracker(&foodSpawner, &playerScore);
+    GameManager gameManager(&myAgent, &agent1, &agent2, &agent3, &agent4);
+    CollisionTracker collisionTracker(&myAgent, &agent1, &agent2, &agent3, &agent4, &gameManager);
 
     //////////////////////////
 
@@ -181,6 +172,8 @@ int main(int argc, char* argv[])
         agent2.Update(deltaTime);
         rootDecision3->MakeDecision(&agent3, deltaTime);
         agent3.Update(deltaTime);
+        rootDecision4->MakeDecision(&agent4, deltaTime);
+        agent4.Update(deltaTime);
       
 
         // Draw
@@ -193,17 +186,20 @@ int main(int argc, char* argv[])
         agent1.Draw();
         agent2.Draw();
         agent3.Draw();
+        agent4.Draw();
         nodeMap.Draw();
 
         foodSpawner.UpdateAllFoods();
         foodTracker.Update();
         scoreTracker.Update();
         playerScore.Update();
+        collisionTracker.Update();
 
         DrawPath(myAgent.GetPath(), WHITE);
         DrawPath(agent1.GetPath(), GREEN);
         DrawPath(agent2.GetPath(), BLUE);
         DrawPath(agent3.GetPath(), ORANGE);
+        DrawPath(agent4.GetPath(), PURPLE);
      
 
 

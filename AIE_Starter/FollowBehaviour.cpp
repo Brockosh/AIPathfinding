@@ -10,17 +10,19 @@ void FollowBehaviour::Update(Agent* agent, float deltaTime)
 	}
 
 	float dist = glm::distance(lastTargetPosition, target->GetPosition());
-	if (dist >= agent->GetNodeMap()->GetCellSize())
+	if (dist >= agent->GetNodeMap()->GetCellSize() / 4)
 	{
 		//lastTargetPosition = target->GetPosition();
+		//Node* node = agent->GetNodeMap()->GetClosestNode(target->GetPosition());
 		Node* node = agent->GetNodeMap()->GetClosestNode(target->GetPosition());
 
 		if (node == nullptr) { return; }
 
-		lastTargetPosition = node->position;
+		//lastTargetPosition = node->position;
+		lastTargetPosition = target->GetPosition();
 		agent->GoTo(lastTargetPosition);
 	}
-
+	agent->SetWasFollowing(true);
 }
 
 void FollowBehaviour::Enter(Agent* agent)

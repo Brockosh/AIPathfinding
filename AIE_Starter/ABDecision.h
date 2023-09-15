@@ -1,8 +1,7 @@
 #pragma once
 #include "Decision.h"
 #include "Condition.h"
-class ABDecision :
-    public Decision
+class ABDecision : public Decision
 {
 
 public:
@@ -12,6 +11,4 @@ public:
     Condition* condition;
 
     virtual void MakeDecision(Agent* agent, float deltaTime);
-
 };
-

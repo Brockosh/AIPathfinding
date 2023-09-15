@@ -10,3 +10,4 @@ void ScoreTracker::Update()
 		}
 	}
 }
+

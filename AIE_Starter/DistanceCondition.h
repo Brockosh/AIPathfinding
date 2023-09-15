@@ -10,6 +10,4 @@ private:
 public:
     DistanceCondition(float d, bool checkIfLessThan) : distanceThreshhold(d), lessThan(checkIfLessThan) {}
     virtual bool IsTrue(Agent* agent);
-
 };
-

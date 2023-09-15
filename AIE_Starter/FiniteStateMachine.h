@@ -3,7 +3,6 @@
 #include <vector>
 
 class State;
-
 class FiniteStateMachine :
     public Behaviour
 {
@@ -18,7 +17,5 @@ public:
     //FiniteStateMachine(State* s) : currentState(s), newState(nullptr) {}
     virtual ~FiniteStateMachine();
     void Update(Agent* agent, float deltaTime);
-
     void AddState(State* s) { states.push_back(s); }
 };
-

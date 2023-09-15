@@ -16,4 +16,3 @@ public:
 	bool IsEatenByAgent(Agent* agent, Food* food);
 	void Update();
 };
-

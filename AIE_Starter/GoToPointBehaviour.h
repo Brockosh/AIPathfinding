@@ -6,6 +6,4 @@ class GoToPointBehaviour :
 {
 public:
     virtual void Update(Agent* agent, float deltaTime);
-
 };
-

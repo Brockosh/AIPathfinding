@@ -19,4 +19,3 @@ public:
     void RemoveEatenFoods();
     void UpdateAllFoods();
 };
-

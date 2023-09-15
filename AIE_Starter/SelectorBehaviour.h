@@ -13,4 +13,3 @@ public:
 	virtual void Update(Agent* agent, float deltaTime);
 	void SetBehaviour(Behaviour* b, Agent* agent);
 };
-

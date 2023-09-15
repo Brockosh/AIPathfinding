@@ -1,7 +1,57 @@
-﻿  NodeMap.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(56,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(60,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(61,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(132,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(132,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  ABDecision.cpp
+  AIE_Starter.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(86,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(91,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(92,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(96,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(170,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(171,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(172,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(173,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Agent.cpp
+  CollisionTracker.cpp
+  Condition.cpp
+  Decision.cpp
+  DecisionBehaviour.cpp
+  DecisionTree.cpp
+  DistanceCondition.cpp
+  FiniteStateMachine.cpp
+  FollowBehaviour.cpp
+  Food.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Food.cpp(16,40): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Food.cpp(16,28): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  FoodSpawner.cpp
+  FoodTracker.cpp
+  GameManager.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  GoToFoodBehaviour.cpp
+  GoToPointBehaviour.cpp
+  LostTargetCondition.cpp
+  NodeMap.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(404,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(408,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(409,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(480,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(480,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  PathAgent.cpp
+  Generating Code...
+  Compiling...
+  Pathfinding.cpp
+  ScoreTracker.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  SelectorBehaviour.cpp
+  State.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\State.cpp(17,3): warning C4150: deletion of pointer to incomplete type 'Condition'; no destructor called
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\State.h(4,7): message : see declaration of 'Condition'
+  WanderBehaviour.cpp
+  Generating Code...
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

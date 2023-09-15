@@ -28,6 +28,4 @@ public:
 
 	std::vector<Transition> GetTransitions() { return transitions; }
 	void AddTransition(Condition* c, State* s) { transitions.push_back( { c, s }); }
-
 };
-

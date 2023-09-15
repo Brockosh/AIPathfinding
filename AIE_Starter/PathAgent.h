@@ -8,36 +8,34 @@ using namespace AIForGames;
 
 class PathAgent
 {
-
 private:
 	glm::vec2 position;
 	int currentIndex;
 	Node* currentNode;
+	Node* adhocNode;
 	float speed;
 
 public:
 	std::vector<Node*> path;
+	std::vector<Node*> smoothedPath;
 	void Update(float deltaTime);
 	void SetDestination(Node* node, NodeMap* nodeMap);
-	//void SetDestination(Node* node, Agent* agent);
 	void Draw();
-	void SetNode(Node* node) 
+	void SetNode(Node* node)
 	{
-		currentNode = node; position = node->position; 
-		//node->UpdateOccupiedStatus(true);
+		currentNode = node; position = node->position;
 	}
-	
-	void SetCurrentNode(Node* node) 
-	{ 
-		currentNode = node; 
+	void SetCurrentNode(Node* node)
+	{
+		currentNode = node;
 		node->UpdateOccupiedStatus(true);
-	} 
-
-	//Attempted fix but noticing weird movement occasionally
-	//void SetNode(Node* node);
+	}
 	void SetSpeed(float speed) { this->speed = speed; }
-
+	void ClearPath()
+	{
+		path.clear();
+		currentIndex = 0;
+	}
 
 	glm::vec2 GetPosition() { return position; }
 };
-

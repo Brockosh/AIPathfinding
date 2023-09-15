@@ -16,4 +16,3 @@ public:
 	bool IsColliding(Agent* player, Agent* enemy);
 	void Update();
 };
-

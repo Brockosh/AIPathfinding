@@ -12,6 +12,6 @@ public:
 		: foodSpawner(fs), playerScore(ps) {}
 
 	void Update();
+	void ResetPlayerScore() { playerScore->ResetScore(); }
 
 };
-

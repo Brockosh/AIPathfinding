@@ -16,4 +16,3 @@ public:
 	bool GetEatenStatus() { return isEaten; }
 	void SetEatenStatus(bool eatenStatus) { isEaten = eatenStatus; }
 };
-

@@ -14,6 +14,7 @@ void Agent::Update(float deltaTime)
 	if (current != nullptr)
 		current->Update(this, deltaTime);
 	pathAgent.Update(deltaTime);
+	std::cout << startingPosition->position.x << std::endl;
 }
 
 //void Agent::Update(float deltaTime)
@@ -49,4 +50,25 @@ void Agent::GoTo(glm::vec2 pos)
 
 	pathAgent.SetCurrentNode(node);
 	pathAgent.SetDestination(end, nodeMap);
+}
+
+glm::vec2 Agent::GetNearestFoodPosition()
+{
+	glm::vec2 currentPosition = pathAgent.GetPosition();
+	float shortestDistance = std::numeric_limits<float>::max(); 
+	glm::vec2 nearestFoodPos = { 0, 0 };
+
+	for (Food* food : myFoodSpawner->GetActiveFood())
+	{
+		glm::vec2 diff = food->position - currentPosition;
+		float distance = glm::length(diff); 
+
+		if (distance < shortestDistance)
+		{
+			shortestDistance = distance;
+			nearestFoodPos = food->position;
+		}
+	}
+
+	return nearestFoodPos;
 }

@@ -146,6 +146,7 @@
     <ClCompile Include="Condition.cpp" />
     <ClCompile Include="Decision.cpp" />
     <ClCompile Include="DecisionBehaviour.cpp" />
+    <ClCompile Include="DecisionTree.cpp" />
     <ClCompile Include="DistanceCondition.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FollowBehaviour.cpp" />
@@ -153,7 +154,9 @@
     <ClCompile Include="FoodSpawner.cpp" />
     <ClCompile Include="FoodTracker.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GoToFoodBehaviour.cpp" />
     <ClCompile Include="GoToPointBehaviour.cpp" />
+    <ClCompile Include="LostTargetCondition.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="AIE_Starter.cpp" />
     <ClCompile Include="NodeMap.cpp" />
@@ -175,6 +178,7 @@
     <ClInclude Include="Condition.h" />
     <ClInclude Include="Decision.h" />
     <ClInclude Include="DecisionBehaviour.h" />
+    <ClInclude Include="DecisionTree.h" />
     <ClInclude Include="DistanceCondition.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FollowBehaviour.h" />
@@ -182,7 +186,9 @@
     <ClInclude Include="FoodSpawner.h" />
     <ClInclude Include="FoodTracker.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GoToFoodBehaviour.h" />
     <ClInclude Include="GoToPointBehaviour.h" />
+    <ClInclude Include="LostTargetCondition.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="NodeMap.h" />
     <ClInclude Include="Pathfinding.h" />

@@ -10,7 +10,9 @@
 #include "WanderBehaviour.h"
 #include "FollowBehaviour.h"
 #include "SelectorBehaviour.h"
+#include "GoToFoodBehaviour.h"
 #include "DistanceCondition.h"
+#include "LostTargetCondition.h"
 #include "DecisionBehaviour.h"
 #include "State.h"
 #include "FiniteStateMachine.h"
@@ -25,7 +27,6 @@
 #include "GameManager.h"
 
 using namespace AIForGames;
-
 
 static void DrawPath(const std::vector<Node*>& path, Color lineColor)
 {
@@ -92,66 +93,95 @@ int main(int argc, char* argv[])
     Node* start = nodeMap.GetNode(middleColumn, middleRow);
 
     FoodSpawner foodSpawner(&nodeMap, 8);
-
-    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, true, YELLOW);
-
+    Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, true, YELLOW, &foodSpawner);
     FoodTracker foodTracker(&myAgent, &foodSpawner, &nodeMap);
-
+#pragma region DecisionTree
     DistanceCondition* closerThan5 = new DistanceCondition(5.0f * nodeMap.GetCellSize(), true);
     DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
-
+    LostTargetCondition* lostTargetCondition = new LostTargetCondition(5.0f * nodeMap.GetCellSize());
 
     DecisionBehaviour* followDecision1 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision1 = new DecisionBehaviour(new WanderBehaviour());
+    DecisionBehaviour* goToFoodFoodDecision1 = new DecisionBehaviour(new GoToFoodBehaviour());
+
+    ABDecision* lostOrWanderDecision1 = new ABDecision();
+    lostOrWanderDecision1->condition = lostTargetCondition;
+    lostOrWanderDecision1->A = goToFoodFoodDecision1;
+    lostOrWanderDecision1->B = wanderDecision1;
+
 
     DecisionBehaviour* followDecision2 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision2 = new DecisionBehaviour(new WanderBehaviour());
+    DecisionBehaviour* goToFoodFoodDecision2 = new DecisionBehaviour(new GoToFoodBehaviour());
+
+    ABDecision* lostOrWanderDecision2 = new ABDecision();
+    lostOrWanderDecision2->condition = lostTargetCondition;
+    lostOrWanderDecision2->A = goToFoodFoodDecision2;
+    lostOrWanderDecision2->B = wanderDecision2;
 
     DecisionBehaviour* followDecision3 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision3 = new DecisionBehaviour(new WanderBehaviour());
+    DecisionBehaviour* goToFoodFoodDecision3 = new DecisionBehaviour(new GoToFoodBehaviour());
+
+    ABDecision* lostOrWanderDecision3 = new ABDecision();
+    lostOrWanderDecision3->condition = lostTargetCondition;
+    lostOrWanderDecision3->A = goToFoodFoodDecision3;
+    lostOrWanderDecision3->B = wanderDecision3;
 
     DecisionBehaviour* followDecision4 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision4 = new DecisionBehaviour(new WanderBehaviour());
+    DecisionBehaviour* goToFoodFoodDecision4 = new DecisionBehaviour(new GoToFoodBehaviour());
 
+    ABDecision* lostOrWanderDecision4 = new ABDecision();
+    lostOrWanderDecision4->condition = lostTargetCondition;
+    lostOrWanderDecision4->A = goToFoodFoodDecision4;
+    lostOrWanderDecision4->B = wanderDecision4;
 
     ABDecision* rootDecision1 = new ABDecision();
     rootDecision1->condition = closerThan5;
     rootDecision1->A = followDecision1;  
-    rootDecision1->B = wanderDecision1;
+    rootDecision1->B = lostOrWanderDecision1;
 
     ABDecision* rootDecision2 = new ABDecision();
     rootDecision2->condition = closerThan5;
     rootDecision2->A = followDecision2; 
-    rootDecision2->B = wanderDecision2;
+    rootDecision2->B = lostOrWanderDecision2;
 
     ABDecision* rootDecision3 = new ABDecision();
     rootDecision3->condition = closerThan5;
     rootDecision3->A = followDecision3; 
-    rootDecision3->B = wanderDecision3;
+    rootDecision3->B = lostOrWanderDecision3;
 
     ABDecision* rootDecision4 = new ABDecision();
     rootDecision4->condition = closerThan5;
     rootDecision4->A = followDecision4;
-    rootDecision4->B = wanderDecision4;
+    rootDecision4->B = lostOrWanderDecision4;
 
+#pragma endregion
 
+#pragma region SetUpStartingPosition
+    Node* node1 = nodeMap.GetNode(1, 1);
+    Node* node2 = nodeMap.GetNode(1, 18);
+    Node* node3 = nodeMap.GetNode(30, 1);
+    Node* node4 = nodeMap.GetNode(30, 18);
+#pragma endregion
 
-    Agent agent1(&nodeMap, rootDecision1, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, WHITE, &myAgent);
-    Agent agent2(&nodeMap, rootDecision2, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, BLUE, &myAgent);
-    Agent agent3(&nodeMap, rootDecision3, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, ORANGE, &myAgent);
-    Agent agent4(&nodeMap, rootDecision4, nodeMap.GetRandomNode(), agentMoveSpeed - 20, false, PURPLE, &myAgent);
+#pragma region AgentSetup
+    Agent agent1(&nodeMap, rootDecision1, node1, agentMoveSpeed - 20, false, WHITE, &foodSpawner, &myAgent);
+    Agent agent2(&nodeMap, rootDecision2, node2, agentMoveSpeed - 20, false, BLUE, &foodSpawner, &myAgent);
+    Agent agent3(&nodeMap, rootDecision3, node3, agentMoveSpeed - 20, false, ORANGE, &foodSpawner, &myAgent);
+    Agent agent4(&nodeMap, rootDecision4, node4, agentMoveSpeed - 20, false, PURPLE, &foodSpawner, &myAgent);
+#pragma endregion
 
     PlayerScore playerScore;
     ScoreTracker scoreTracker(&foodSpawner, &playerScore);
-    GameManager gameManager(&myAgent, &agent1, &agent2, &agent3, &agent4);
+    GameManager gameManager(&myAgent, &agent1, &agent2, &agent3, &agent4, &scoreTracker);
     CollisionTracker collisionTracker(&myAgent, &agent1, &agent2, &agent3, &agent4, &gameManager);
 
     //////////////////////////
 
-
     float time = (float)GetTime();
     float deltaTime;
-
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -161,7 +191,6 @@ int main(int argc, char* argv[])
         float fTime = (float)GetTime();
         deltaTime = fTime - time;
         time = fTime;
-
 
         // UPDATE
         //----------------------------------------------------------------------------------
@@ -174,7 +203,6 @@ int main(int argc, char* argv[])
         agent3.Update(deltaTime);
         rootDecision4->MakeDecision(&agent4, deltaTime);
         agent4.Update(deltaTime);
-      
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -200,8 +228,6 @@ int main(int argc, char* argv[])
         DrawPath(agent2.GetPath(), BLUE);
         DrawPath(agent3.GetPath(), ORANGE);
         DrawPath(agent4.GetPath(), PURPLE);
-     
-
 
         EndDrawing();
         //----------------------------------------------------------------------------------

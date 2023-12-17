@@ -13,18 +13,6 @@ void GoToFoodBehaviour::Update(Agent* agent, float deltaTime)
 		return;
 	}
 
-	//float dist = glm::distance(lastTargetPosition, target->GetPosition());
-	//if (dist >= agent->GetNodeMap()->GetCellSize() / 2)
-	//{
-	//	//lastTargetPosition = target->GetPosition();
-	//	//Node* node = agent->GetNodeMap()->GetClosestNode(target->GetPosition());
-	//	Node* node = agent->GetNodeMap()->GetClosestNode(target->GetPosition());
-
-	//	if (node == nullptr) { return; }
-
-	//	//lastTargetPosition = node->position;
-	//	lastTargetPosition = target->GetPosition();
-	//}
 	if (!hasRun)
 	{
 		agent->GoTo(agent->GetNearestFoodPosition());
@@ -35,6 +23,4 @@ void GoToFoodBehaviour::Update(Agent* agent, float deltaTime)
 
 void GoToFoodBehaviour::Enter(Agent* agent)
 {
-	std::cout << "Going to food" << std::endl;
-
 }

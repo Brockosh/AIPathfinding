@@ -31,6 +31,3 @@ void CollisionTracker::Update()
         }
     }
 }
-
-
-

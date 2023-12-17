@@ -96,10 +96,12 @@ int main(int argc, char* argv[])
     Agent myAgent(&nodeMap, new GoToPointBehaviour(), start, agentMoveSpeed, true, YELLOW, &foodSpawner);
     FoodTracker foodTracker(&myAgent, &foodSpawner, &nodeMap);
 #pragma region DecisionTree
+    //Set up conditions
     DistanceCondition* closerThan5 = new DistanceCondition(5.0f * nodeMap.GetCellSize(), true);
     DistanceCondition* furtherThan4 = new DistanceCondition(4.0f * nodeMap.GetCellSize(), false);
     LostTargetCondition* lostTargetCondition = new LostTargetCondition(5.0f * nodeMap.GetCellSize());
 
+    //Set up behaviours for tree 1
     DecisionBehaviour* followDecision1 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision1 = new DecisionBehaviour(new WanderBehaviour());
     DecisionBehaviour* goToFoodFoodDecision1 = new DecisionBehaviour(new GoToFoodBehaviour());
@@ -109,7 +111,7 @@ int main(int argc, char* argv[])
     lostOrWanderDecision1->A = goToFoodFoodDecision1;
     lostOrWanderDecision1->B = wanderDecision1;
 
-
+    //Set up behaviours for tree 2
     DecisionBehaviour* followDecision2 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision2 = new DecisionBehaviour(new WanderBehaviour());
     DecisionBehaviour* goToFoodFoodDecision2 = new DecisionBehaviour(new GoToFoodBehaviour());
@@ -119,6 +121,7 @@ int main(int argc, char* argv[])
     lostOrWanderDecision2->A = goToFoodFoodDecision2;
     lostOrWanderDecision2->B = wanderDecision2;
 
+    //Set up behaviours for tree 3
     DecisionBehaviour* followDecision3 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision3 = new DecisionBehaviour(new WanderBehaviour());
     DecisionBehaviour* goToFoodFoodDecision3 = new DecisionBehaviour(new GoToFoodBehaviour());
@@ -128,6 +131,7 @@ int main(int argc, char* argv[])
     lostOrWanderDecision3->A = goToFoodFoodDecision3;
     lostOrWanderDecision3->B = wanderDecision3;
 
+    //Set up behaviours for tree 4
     DecisionBehaviour* followDecision4 = new DecisionBehaviour(new FollowBehaviour());
     DecisionBehaviour* wanderDecision4 = new DecisionBehaviour(new WanderBehaviour());
     DecisionBehaviour* goToFoodFoodDecision4 = new DecisionBehaviour(new GoToFoodBehaviour());
@@ -137,21 +141,25 @@ int main(int argc, char* argv[])
     lostOrWanderDecision4->A = goToFoodFoodDecision4;
     lostOrWanderDecision4->B = wanderDecision4;
 
+    //tree 1
     ABDecision* rootDecision1 = new ABDecision();
     rootDecision1->condition = closerThan5;
     rootDecision1->A = followDecision1;  
     rootDecision1->B = lostOrWanderDecision1;
 
+    //tree 2
     ABDecision* rootDecision2 = new ABDecision();
     rootDecision2->condition = closerThan5;
     rootDecision2->A = followDecision2; 
     rootDecision2->B = lostOrWanderDecision2;
 
+    //tree 3
     ABDecision* rootDecision3 = new ABDecision();
     rootDecision3->condition = closerThan5;
     rootDecision3->A = followDecision3; 
     rootDecision3->B = lostOrWanderDecision3;
 
+    //tree 4
     ABDecision* rootDecision4 = new ABDecision();
     rootDecision4->condition = closerThan5;
     rootDecision4->A = followDecision4;
@@ -223,11 +231,11 @@ int main(int argc, char* argv[])
         playerScore.Update();
         collisionTracker.Update();
 
-        DrawPath(myAgent.GetPath(), WHITE);
-        DrawPath(agent1.GetPath(), GREEN);
+        /*DrawPath(myAgent.GetPath(), WHITE);
+        DrawPath(agent1.GetPath(), YELLOW);
         DrawPath(agent2.GetPath(), BLUE);
         DrawPath(agent3.GetPath(), ORANGE);
-        DrawPath(agent4.GetPath(), PURPLE);
+        DrawPath(agent4.GetPath(), PURPLE);*/
 
         EndDrawing();
         //----------------------------------------------------------------------------------

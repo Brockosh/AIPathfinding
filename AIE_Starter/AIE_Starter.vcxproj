@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="ABDecision.cpp" />
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="AgentDrawer.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="CollisionTracker.cpp" />
     <ClCompile Include="Condition.cpp" />
@@ -173,6 +174,7 @@
   <ItemGroup>
     <ClInclude Include="ABDecision.h" />
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="AgentDrawer.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="CollisionTracker.h" />
     <ClInclude Include="Condition.h" />

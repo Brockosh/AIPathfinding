@@ -31,6 +31,24 @@
     <Filter Include="Source Files\FSM">
       <UniqueIdentifier>{08af24a8-fcca-4f8b-b1f2-e42a84cb04a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DecisionTree">
+      <UniqueIdentifier>{6185be3d-409d-4fad-94d8-b7f426c9c88c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Food">
+      <UniqueIdentifier>{e9f64801-469b-4d3d-a3c4-1bf5e5a26482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement">
+      <UniqueIdentifier>{e2636da3-1810-491e-b385-7682bd9255f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DecisionTree">
+      <UniqueIdentifier>{84cf6561-d723-4458-908a-42ec562feb4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Food">
+      <UniqueIdentifier>{909ce4fa-f857-4ee2-a5ad-da2ebcc55ff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement">
+      <UniqueIdentifier>{314fac09-1a4d-40b4-b083-1b49d6963f6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIE_Starter.cpp">
@@ -76,42 +94,45 @@
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
     <ClCompile Include="Decision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ABDecision.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\DecisionTree</Filter>
     </ClCompile>
     <ClCompile Include="DecisionBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Food.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodSpawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerScore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\DecisionTree</Filter>
     </ClCompile>
     <ClCompile Include="DecisionTree.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\DecisionTree</Filter>
     </ClCompile>
-    <ClCompile Include="GoToFoodBehaviour.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ABDecision.cpp">
+      <Filter>Source Files\DecisionTree</Filter>
     </ClCompile>
     <ClCompile Include="LostTargetCondition.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToFoodBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodTracker.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodSpawner.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionTracker.cpp">
+      <Filter>Source Files\GameManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerScore.cpp">
+      <Filter>Source Files\GameManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\GameManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreTracker.cpp">
+      <Filter>Source Files\GameManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentDrawer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,43 +179,46 @@
     <ClInclude Include="FiniteStateMachine.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="Decision.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GoToFoodBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="ABDecision.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DecisionTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Decision.h">
+      <Filter>Header Files\DecisionTree</Filter>
     </ClInclude>
     <ClInclude Include="DecisionBehaviour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Food.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodSpawner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerScore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DecisionTree</Filter>
     </ClInclude>
     <ClInclude Include="DecisionTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DecisionTree</Filter>
     </ClInclude>
-    <ClInclude Include="GoToFoodBehaviour.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Food.h">
+      <Filter>Header Files\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodSpawner.h">
+      <Filter>Header Files\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodTracker.h">
+      <Filter>Header Files\Food</Filter>
     </ClInclude>
     <ClInclude Include="LostTargetCondition.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTracker.h">
+      <Filter>Header Files\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerScore.h">
+      <Filter>Header Files\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreTracker.h">
+      <Filter>Header Files\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentDrawer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

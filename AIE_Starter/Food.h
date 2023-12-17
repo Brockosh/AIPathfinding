@@ -10,6 +10,7 @@ class Food
 
 public:
 	glm::vec2 position;
+	Texture2D foodTexture = LoadTexture("MyImages/Burger.png");
 	Food(NodeMap* nm);
 	void Update();
 	NodeMap* GetNodeMap() { return nodeMap; }

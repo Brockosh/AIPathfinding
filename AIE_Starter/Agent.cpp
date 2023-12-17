@@ -1,8 +1,8 @@
 #include "Agent.h"
 
-Agent::Agent()
-{
-}
+//Agent::Agent()
+//{
+//}
 
 void Agent::Reset()
 {
@@ -14,29 +14,14 @@ void Agent::Update(float deltaTime)
 	if (current != nullptr)
 		current->Update(this, deltaTime);
 	pathAgent.Update(deltaTime);
-	std::cout << startingPosition->position.x << std::endl;
+	previousPosition = pathAgent.GetPosition();
+	agentDrawer.Update(deltaTime);
+	//IsMovingRight();
 }
-
-//void Agent::Update(float deltaTime)
-//{
-//	if (decisionRoot != nullptr)
-//		decisionRoot->MakeDecision(this, deltaTime);
-//	pathAgent.Update(deltaTime);
-//}
 
 void Agent::Draw()
 {
-		DrawCircle((int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, 12, color);
-	//if (!isPlayerAgent)
-	//{
-	//	//DrawTexture(agentTexture, (int)pathAgent.GetPosition().x, (int)pathAgent.GetPosition().y, WHITE);
-	//}
-	//else
-	//{
-	//	float scale = 0.2f;
-	//	Vector2 position = { pathAgent.GetPosition().x - agentTexture.width * 0.5f * scale, pathAgent.GetPosition().y - agentTexture.height * 0.5f * scale };
-	//	DrawTextureEx(agentTexture, position, 0.0f, scale, WHITE);
-	//}
+	agentDrawer.Draw(*this);
 }
 
 void Agent::GoTo(glm::vec2 pos)
@@ -71,4 +56,20 @@ glm::vec2 Agent::GetNearestFoodPosition()
 	}
 
 	return nearestFoodPos;
+}
+
+
+
+bool Agent::IsMovingRight() 
+{
+	glm::vec2 currentPosition = GetPathAgent()->GetPosition();
+	/*if (currentPosition.x > previousPosition.x)
+	{
+		std::cout << "Moving right" << std::endl;
+	}
+	else
+	{
+		std::cout << "Moving left" << std::endl;
+	}*/
+	return currentPosition.x > previousPosition.x;
 }

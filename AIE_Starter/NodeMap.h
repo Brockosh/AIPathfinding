@@ -14,21 +14,15 @@ class NodeMap
 	Node* start;
 	Node* end;
 
-	Texture2D* cloudTexture;
-
 	void ConnectWestAndSouth(int x, int y);
-	static bool NodeInList(std::vector<Node*> list);
-	bool IsVisible(Node* start, Node* end);
 
 public:
-
+	Texture2D cloudTexture = LoadTexture("MyImages/Cloud.png");
 	void Init(std::vector<std::string> asciiMap, int cellSize);
 	void Draw();
 	float GetCellSize() { return cellSize; }
 	static std::vector<Node*>DijkstrasSearch(Node* startNode, Node* endNode, Node* newNode);
-	std::vector<Node*> SmoothPath(std::vector<Node*> path);
 	Node* GetNode(int x, int y) { return nodes[x + width * y]; }
 	Node* GetClosestNode(glm::vec2 worldPos);
 	Node* GetRandomNode();
-	Node* GetRandomStartingNode();
 };

@@ -5,9 +5,6 @@
 
 void PlayerScore::Update()
 {
-	//std::cout << score << "\n";
-	
-	
 	std::string scoreStr = std::to_string(score);
 	int textWidth = MeasureText(scoreStr.c_str(), 20);
 

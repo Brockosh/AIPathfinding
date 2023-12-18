@@ -3,14 +3,9 @@
 #include "Agent.h"
 #include "GameManager.h"
 
-CollisionTracker::CollisionTracker(Agent* player, Agent* e1, Agent* e2, Agent* e3, Agent* e4, GameManager* gm)
-    : playerAgent(player), gameManager(gm)
-{
-    chasingAgents.push_back(e1);
-    chasingAgents.push_back(e2);
-    chasingAgents.push_back(e3);
-    chasingAgents.push_back(e4);
-}
+CollisionTracker::CollisionTracker(Agent* player, GameManager* gm)
+    : playerAgent(player), gameManager(gm){}
+
 
 bool CollisionTracker::IsColliding(Agent* player, Agent* enemy)
 {
@@ -30,4 +25,10 @@ void CollisionTracker::Update()
             gameManager->ResetGameState();
         }
     }
+}
+
+void CollisionTracker::Init(Agent* player, std::vector<Agent*>& enemies)
+{
+    playerAgent = player;
+    chasingAgents = enemies;
 }

@@ -1,15 +1,32 @@
 #pragma once
+#include "NodeMap.h"
+#include "Agent.h"
+#include "FoodSpawner.h"
+#include "FoodTracker.h"
+#include "ScoreTracker.h"
+#include "CollisionTracker.h"
+#include "PlayerScore.h"
+#include "Behaviour.h"
+#include "ABDecision.h"
 #include <vector>
 
-class Agent;
-class ScoreTracker;
-class GameManager
-{
+class GameManager {
 private:
-	std::vector<Agent*> agentsInGame;
-	ScoreTracker* scoreTracker;
+    std::vector<Agent*> agentsInGame;
+    Agent* playerAgent;
+    std::vector<Agent*> enemyAgents;
+    FoodSpawner foodSpawner;
+    PlayerScore playerScore;
+    ScoreTracker scoreTracker;
+    FoodTracker foodTracker;
+    CollisionTracker collisionTracker;
 
 public:
-	GameManager(Agent* player, Agent* e1, Agent* e2, Agent* e3, Agent* e4, ScoreTracker* st);
+    NodeMap* nodeMap;
+	GameManager(NodeMap* nodeMap, int numberOfEnemies, float playerSpeed, float enemySpeed, int foodAmount);
+    ABDecision* SetupEnemyDecisionTree();
+    NodeMap* GetNodeMap() { return nodeMap; }
+	void Update(float deltaTime);
+    void Draw();
 	void ResetGameState();
 };

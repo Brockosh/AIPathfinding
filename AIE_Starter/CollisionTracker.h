@@ -12,7 +12,8 @@ private:
 	GameManager* gameManager;
 
 public:
-	CollisionTracker(Agent* player, Agent* e1, Agent* e2, Agent* e3, Agent* e4, GameManager* gm);
+	CollisionTracker(Agent* player, GameManager* gm);
 	bool IsColliding(Agent* player, Agent* enemy);
 	void Update();
+	void Init(Agent* player, std::vector<Agent*>& enemies);
 };

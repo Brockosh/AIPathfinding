@@ -10,7 +10,7 @@ class Agent
 public:
 	Agent();
 	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, 
-		float speed, bool isPlayer, Color agentColor, FoodSpawner* fs, Agent* targetAgent = nullptr)
+		float speed, bool isPlayer, FoodSpawner* fs, Agent* targetAgent = nullptr)
 		: agentDrawer(isPlayer)
 	{
 		current = behaviour;
@@ -19,7 +19,7 @@ public:
 		this->startingPosition = startingNode;
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
-		color = agentColor;
+		color = WHITE;
 		this->myFoodSpawner = fs;
 		current->Enter(this);
 		
@@ -27,7 +27,7 @@ public:
 	}
 
 	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, 
-		float speed, bool isPlayer, Color agentColor, FoodSpawner* fs, Agent* targetAgent = nullptr)
+		float speed, bool isPlayer, FoodSpawner* fs, Agent* targetAgent = nullptr)
 		: agentDrawer(isPlayer)
 	{
 		this->decisionRoot = decisionRoot;
@@ -36,7 +36,7 @@ public:
 		pathAgent.SetNode(startingNode);
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
-		color = agentColor;
+		color = WHITE;
 		this->myFoodSpawner = fs;
 		isPlayerAgent = isPlayer;
 	}

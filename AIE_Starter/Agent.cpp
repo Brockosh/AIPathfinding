@@ -13,8 +13,12 @@ void Agent::Update(float deltaTime)
 {
 	if (current != nullptr)
 		current->Update(this, deltaTime);
+
+	if (decisionRoot != nullptr)
+		decisionRoot->MakeDecision(this, deltaTime);
+
 	pathAgent.Update(deltaTime);
-	previousPosition = pathAgent.GetPosition();
+	//previousPosition = pathAgent.GetPosition();
 	agentDrawer.Update(deltaTime);
 	//IsMovingRight();
 }

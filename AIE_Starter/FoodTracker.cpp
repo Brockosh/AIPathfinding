@@ -18,6 +18,13 @@ bool FoodTracker::IsEatenByAgent(Agent* agent, Food* food)
     return false;
 }
 
+void FoodTracker::Init(Agent* pAgent)
+{
+    playerAgent = pAgent;
+    activeFood = myFoodSpawner->GetActiveFood();
+}
+
+
 void FoodTracker::Update()
 {
     activeFood = myFoodSpawner->GetActiveFood();

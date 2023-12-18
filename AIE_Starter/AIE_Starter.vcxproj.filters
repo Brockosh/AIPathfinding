@@ -230,5 +230,8 @@
     <ClInclude Include="GameState.h">
       <Filter>Header Files\GameManagement</Filter>
     </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

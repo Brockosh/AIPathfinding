@@ -15,9 +15,11 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
     playerScore(),
     scoreTracker(&foodSpawner, &playerScore),
     foodTracker(nullptr, &foodSpawner, nodeMap),
-    collisionTracker(nullptr, this)
+    collisionTracker(nullptr, this),
+    mainMenu()
 
 {
+    gameState = GameState::MainMenu;
 
     // Gotta fix this to predetermine starting positions
     Node* playerStartNode = nodeMap->GetRandomNode(); 
@@ -73,24 +75,42 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 
 void GameManager::Update(float deltaTime)
 {
-
-    for (Agent* agent : agentsInGame)
+    if (gameState == GameState::MainMenu)
     {
-        agent->Update(deltaTime);
+        mainMenu.Update();
+        if (mainMenu.GetPlayButton().clicked)
+        {
+            gameState = GameState::Playing;
+        }
     }
-    foodSpawner.UpdateAllFoods();
-    foodTracker.Update();
-    scoreTracker.Update();
-    playerScore.Update();
-    collisionTracker.Update();
+    else
+    {
+        
+        for (Agent* agent : agentsInGame)
+        {
+            agent->Update(deltaTime);
+        }
+        foodSpawner.UpdateAllFoods();
+        foodTracker.Update();
+        scoreTracker.Update();
+        playerScore.Update();
+        collisionTracker.Update();
+    }
 }
 
 void GameManager::Draw() 
 {
-    nodeMap->Draw();
-    for (Agent* agent : agentsInGame) 
+    if (gameState == GameState::MainMenu)
     {
-        agent->Draw();
+        mainMenu.Draw();
+    }
+    else
+    {
+        nodeMap->Draw();
+        for (Agent* agent : agentsInGame) 
+        {
+            agent->Draw();
+        }
     }
 }
 
@@ -103,4 +123,11 @@ void GameManager::ResetGameState()
 		agent->GetPathAgent()->ClearPath();
 		agent->SetWasFollowing(false);
 	}
+}
+
+void GameManager::SwitchToMainMenu() 
+{
+    gameState = GameState::MainMenu;
+    mainMenu.SetPlayButton(false);
+    ResetGameState();  
 }

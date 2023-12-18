@@ -1,17 +1,23 @@
 #pragma once
 #include "raylib.h"
 #include "raygui.h"
+#include "Button.h"
 
 class MainMenu {
-public:
-    MainMenu(int screenWidth, int screenHeight)
-        : screenWidth(screenWidth), screenHeight(screenHeight) {}
+private:
+    Button playButton;
+    Button quitButton;
 
-    int Update();  
+
+
+public:
+    MainMenu();
+    Button GetPlayButton() { return playButton; }
+    void SetPlayButton(bool clickedStatus) { playButton.clicked = clickedStatus; }
+
+    void Update();  
     void Draw();
 
-private:
-    int screenWidth, screenHeight;
     
 };
 

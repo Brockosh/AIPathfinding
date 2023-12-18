@@ -177,6 +177,7 @@
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AgentDrawer.h" />
     <ClInclude Include="Behaviour.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionTracker.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="Decision.h" />

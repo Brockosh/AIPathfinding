@@ -9,6 +9,8 @@
 #include "Behaviour.h"
 #include "ABDecision.h"
 #include <vector>
+#include "GameState.h"
+#include "MainMenu.h"
 
 class GameManager {
 private:
@@ -20,6 +22,8 @@ private:
     ScoreTracker scoreTracker;
     FoodTracker foodTracker;
     CollisionTracker collisionTracker;
+    MainMenu mainMenu;
+    GameState gameState;
 
 public:
     NodeMap* nodeMap;
@@ -29,4 +33,5 @@ public:
 	void Update(float deltaTime);
     void Draw();
 	void ResetGameState();
+    void SwitchToMainMenu();
 };

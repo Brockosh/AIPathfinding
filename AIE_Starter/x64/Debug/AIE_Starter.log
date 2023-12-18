@@ -1,11 +1,6 @@
-﻿  AIE_Starter.cpp
+﻿  GameManager.cpp
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(86,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(91,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(92,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  CollisionTracker.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  GameManager.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(32,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

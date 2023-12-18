@@ -1,42 +1,41 @@
+#pragma once
 #include "MainMenu.h"
+#include "raylib.h"
+#include "raygui.h"
 
-int MainMenu::Update() {
-    // Cast screenWidth and screenHeight to float for GUI element positioning
-    float buttonWidth = 100.0f;
-    float buttonHeight = 40.0f;
 
-    Rectangle playButton = 
-    {
-        static_cast<float>(screenWidth) / 2 - buttonWidth / 2,
-        static_cast<float>(screenHeight) / 2 - buttonHeight / 2,
-        buttonWidth,
-        buttonHeight
-    };
+//MainMenu::MainMenu() :
+//    playButton({ GetScreenWidth() / 2 - 250, GetScreenHeight() / 2 - 100, 500, 200 }, "Play"),
+//    quitButton({ GetScreenWidth() / 2 - 250, GetScreenHeight() / 2 + 120, 500, 200 }, "Quit") {}
 
-    Rectangle quitButton = 
-    {
-        static_cast<float>(screenWidth) / 2 - buttonWidth / 2,
-        static_cast<float>(screenHeight) / 2 + 30.0f,
-        buttonWidth,
-        buttonHeight
-    };
 
-    /*if (GuiButton(playButton, "Play")) 
-    {
-        return 1;
-    }
-
-    if (GuiButton(quitButton, "Quit")) 
-    {
-        return 2;
-    }*/
-
-    return 0;
+MainMenu::MainMenu()
+    : 
+    playButton(Rectangle{ GetScreenWidth() / 2 - 250.0f, GetScreenHeight() / 2 - 100.0f, 500.0f, 200.0f }, "Play"),
+    quitButton(Rectangle{ GetScreenWidth() / 2 - 250.0f, GetScreenHeight() / 2 + 120.0f, 500.0f, 200.0f }, "Quit")
+{
 }
 
-void MainMenu::Draw() {
-    // Draw the menu title
-    DrawText("Feathered Feast", screenWidth / 2 - MeasureText("Feathered Feast", 20) / 2, screenHeight / 4, 20, BLACK);
 
-    // Note: Buttons are drawn in Update method
+// Update function to handle menu logic
+void MainMenu::Update() 
+{
+    playButton.Update();
+    quitButton.Update();
+}
+
+// Draw function to handle rendering of the menu
+void MainMenu::Draw()  
+{
+
+    int textWidth = MeasureText("Feathered Feast", 150);
+    int textX = GetScreenWidth() / 2 - textWidth / 2;
+
+
+    DrawText("Feathered Feast", textX, GetScreenHeight() / 4, 150, WHITE);
+
+    playButton.Draw();
+    quitButton.Draw();
+
+
 }

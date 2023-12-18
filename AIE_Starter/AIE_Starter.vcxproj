@@ -149,6 +149,7 @@
     <ClCompile Include="DecisionBehaviour.cpp" />
     <ClCompile Include="DecisionTree.cpp" />
     <ClCompile Include="DistanceCondition.cpp" />
+    <ClCompile Include="EndGameMenu.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FollowBehaviour.cpp" />
     <ClCompile Include="Food.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="DecisionBehaviour.h" />
     <ClInclude Include="DecisionTree.h" />
     <ClInclude Include="DistanceCondition.h" />
+    <ClInclude Include="EndGameMenu.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FollowBehaviour.h" />
     <ClInclude Include="Food.h" />

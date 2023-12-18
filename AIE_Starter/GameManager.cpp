@@ -16,7 +16,8 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
     scoreTracker(&foodSpawner, &playerScore),
     foodTracker(nullptr, &foodSpawner, nodeMap),
     collisionTracker(nullptr, this),
-    mainMenu()
+    mainMenu(),
+    endGameMenu()
 
 {
     gameState = GameState::MainMenu;
@@ -75,17 +76,16 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 
 void GameManager::Update(float deltaTime)
 {
-    if (gameState == GameState::MainMenu)
+    switch (gameState)
     {
+    case GameState::MainMenu:
         mainMenu.Update();
         if (mainMenu.GetPlayButton().clicked)
         {
             gameState = GameState::Playing;
         }
-    }
-    else
-    {
-        
+        break;
+    case GameState::Playing:
         for (Agent* agent : agentsInGame)
         {
             agent->Update(deltaTime);
@@ -95,22 +95,38 @@ void GameManager::Update(float deltaTime)
         scoreTracker.Update();
         playerScore.Update();
         collisionTracker.Update();
+        break;
+    case GameState::EndGameMenu:
+        endGameMenu.Update(deltaTime);
+        if (endGameMenu.ShouldExit()) 
+        {
+            SwitchToMainMenu();
+            endGameMenu.Exit();
+        }
+        break;
+
     }
 }
 
-void GameManager::Draw() 
+void GameManager::Draw()
 {
-    if (gameState == GameState::MainMenu)
+    switch (gameState)
     {
+    case GameState::MainMenu:
         mainMenu.Draw();
-    }
-    else
-    {
+        break;
+
+    case GameState::Playing:
         nodeMap->Draw();
-        for (Agent* agent : agentsInGame) 
+        for (Agent* agent : agentsInGame)
         {
             agent->Draw();
         }
+        break;
+
+    case GameState::EndGameMenu:
+        endGameMenu.Draw();
+        break; 
     }
 }
 
@@ -128,6 +144,12 @@ void GameManager::ResetGameState()
 void GameManager::SwitchToMainMenu() 
 {
     gameState = GameState::MainMenu;
+}
+
+void GameManager::SwitchToEndGameMenu()
+{
+    gameState = GameState::EndGameMenu;
+    endGameMenu.SetPlayerScore(playerScore.GetScore());
     mainMenu.SetPlayButton(false);
-    ResetGameState();  
+    ResetGameState();
 }

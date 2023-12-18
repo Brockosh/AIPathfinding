@@ -11,6 +11,7 @@
 #include <vector>
 #include "GameState.h"
 #include "MainMenu.h"
+#include "EndGameMenu.h"
 
 class GameManager {
 private:
@@ -23,6 +24,7 @@ private:
     FoodTracker foodTracker;
     CollisionTracker collisionTracker;
     MainMenu mainMenu;
+    EndGameMenu endGameMenu;
     GameState gameState;
 
 public:
@@ -34,4 +36,6 @@ public:
     void Draw();
 	void ResetGameState();
     void SwitchToMainMenu();
+    void SwitchToEndGameMenu();
+    void SetPlayerScore(int score) { playerScore.SetScore(score); }
 };

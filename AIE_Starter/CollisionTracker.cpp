@@ -22,7 +22,8 @@ void CollisionTracker::Update()
         if (IsColliding(playerAgent, enemy))
         {
             std::cout << "HIT" << std::endl;
-            gameManager->ResetGameState();
+            gameManager->SwitchToEndGameMenu();
+            return;
         }
     }
 }

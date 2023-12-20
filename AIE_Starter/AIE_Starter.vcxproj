@@ -160,6 +160,7 @@
     <ClCompile Include="GoToPointBehaviour.cpp" />
     <ClCompile Include="LostTargetCondition.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="AIE_Starter.cpp" />
     <ClCompile Include="NodeMap.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="GoToPointBehaviour.h" />
     <ClInclude Include="LostTargetCondition.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MusicManager.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="NodeMap.h" />
     <ClInclude Include="Pathfinding.h" />

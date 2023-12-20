@@ -1,7 +1,7 @@
 #include "EndGameMenu.h"
 
 
-EndGameMenu::EndGameMenu() : displayTime(2.0f), elapsedTime(0.0f), playerScore(0) {}
+EndGameMenu::EndGameMenu() : displayTime(3.0f), elapsedTime(0.0f), playerScore(0) {}
 
 //void EndGameMenu::Start(int score) 
 //{
@@ -20,7 +20,8 @@ bool EndGameMenu::ShouldExit()
 }
 
 
-void EndGameMenu::Draw() {
+void EndGameMenu::Draw() 
+{
     // Display the score centered on the screen
     std::string scoreText = "Score: " + std::to_string(playerScore);
     int fontSize = 300; // Adjust as needed

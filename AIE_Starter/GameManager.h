@@ -12,6 +12,7 @@
 #include "GameState.h"
 #include "MainMenu.h"
 #include "EndGameMenu.h"
+#include "MusicManager.h"
 
 class GameManager {
 private:
@@ -25,6 +26,7 @@ private:
     CollisionTracker collisionTracker;
     MainMenu mainMenu;
     EndGameMenu endGameMenu;
+    MusicManager musicManager;
     GameState gameState;
 
 public:

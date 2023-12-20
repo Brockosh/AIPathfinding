@@ -40,6 +40,10 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 
     foodTracker.Init(playerAgent);
     collisionTracker.Init(playerAgent, enemyAgents);
+
+    musicManager.InitMusicManager(); 
+    musicManager.PlayMusic(gameState);
+
 }
 
     ABDecision* GameManager::SetupEnemyDecisionTree() 
@@ -76,6 +80,8 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 
 void GameManager::Update(float deltaTime)
 {
+    musicManager.UpdateMusicStream();
+
     switch (gameState)
     {
     case GameState::MainMenu:
@@ -83,6 +89,7 @@ void GameManager::Update(float deltaTime)
         if (mainMenu.GetPlayButton().clicked)
         {
             gameState = GameState::Playing;
+            musicManager.PlayMusic(gameState);
         }
         break;
     case GameState::Playing:
@@ -144,11 +151,13 @@ void GameManager::ResetGameState()
 void GameManager::SwitchToMainMenu() 
 {
     gameState = GameState::MainMenu;
+    musicManager.PlayMusic(gameState);
 }
 
 void GameManager::SwitchToEndGameMenu()
 {
     gameState = GameState::EndGameMenu;
+    musicManager.PlayMusic(gameState);
     endGameMenu.SetPlayerScore(playerScore.GetScore());
     mainMenu.SetPlayButton(false);
     ResetGameState();

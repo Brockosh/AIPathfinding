@@ -95,7 +95,8 @@ int main(int argc, char* argv[])
     int numberOfEnemies = 7;
     float playerSpeed = 50 * 3.5;
     float enemySpeed = playerSpeed - 20;
-    GameManager gameManager(&nodeMap, numberOfEnemies, playerSpeed, enemySpeed, 12);
+    int burgerAmount = 30;
+    GameManager gameManager(&nodeMap, numberOfEnemies, playerSpeed, enemySpeed, burgerAmount);
 
 
     //////////////////////////

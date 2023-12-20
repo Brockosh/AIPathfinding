@@ -2,7 +2,8 @@
 #include "raylib.h"
 #include <string>
 
-class EndGameMenu {
+class EndGameMenu 
+{
 private:
     float displayTime;
     float elapsedTime;

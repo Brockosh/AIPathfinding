@@ -36,6 +36,13 @@ public:
 		path.clear();
 		currentIndex = 0;
 	}
+	
+	Node* GetCurrentNode()
+	{
+		return currentNode;
+	}
+
+	void SetNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance);
 
 	glm::vec2 GetPosition() { return position; }
 };

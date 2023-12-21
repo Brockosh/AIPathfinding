@@ -17,6 +17,7 @@ MainMenu::MainMenu()
     /*playerBirdTexture = LoadTexture("MyImages/Player_01.png");
     enemyBirdTexture = LoadTexture("MyImages/Player_02.png");*/
 
+    customFont = LoadFont("Fonts/Bubble.ttf");
     Image playerBirdImage = LoadImage("MyImages/Player_01.png");
     Image enemyBirdImage = LoadImage("MyImages/Enemy_02.png");
 
@@ -52,9 +53,10 @@ void MainMenu::Draw()
     int textWidth = MeasureText("Feathered Feast", 150);
     int textX = GetScreenWidth() / 2 - textWidth / 2;
 
+    Vector2 textPos = { textX, GetScreenHeight() / 6 };
+    //DrawTextEx(customFont, "Feathered Feast", textPos, 150, 100, WHITE);
 
     DrawText("Feathered Feast", textX, GetScreenHeight() / 6, 150, WHITE);
-
     playButton.Draw();
     quitButton.Draw();
     //Rectangle insertRec = { 200, 400, -10, 50 };
@@ -69,4 +71,5 @@ MainMenu::~MainMenu()
 {
     UnloadTexture(playerBirdTexture); 
     UnloadTexture(enemyBirdTexture); 
+    UnloadFont(customFont);
 }

@@ -23,7 +23,7 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
     gameState = GameState::MainMenu;
 
     // Gotta fix this to predetermine starting positions
-    Node* playerStartNode = nodeMap->GetRandomNode(); 
+    Node* playerStartNode = nodeMap->GetCenterNode(); 
     playerAgent = new Agent(nodeMap, new GoToPointBehaviour(), playerStartNode, playerSpeed, true, &foodSpawner);
     agentsInGame.push_back(playerAgent);
 
@@ -33,7 +33,11 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 
         // Setup decision tree and behavior for each enemy
         ABDecision* rootDecision = SetupEnemyDecisionTree();
-        Agent* enemyAgent = new Agent(nodeMap, rootDecision, enemyStartNode, enemySpeed, false, &foodSpawner, playerAgent);
+        Agent* enemyAgent = new Agent(nodeMap, rootDecision, enemySpeed, false, &foodSpawner, playerAgent);
+
+        float minDistance = 350.0f;/* specify the minimum distance */
+        enemyAgent->SetStartingNodeAtMinimumDistance(nodeMap, playerAgent->GetPosition(), minDistance);
+
         enemyAgents.push_back(enemyAgent);
         agentsInGame.push_back(enemyAgent);
     }

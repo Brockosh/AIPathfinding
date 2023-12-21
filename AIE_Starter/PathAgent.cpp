@@ -52,6 +52,25 @@ void PathAgent::Draw()
 	DrawCircle((int)position.x, (int)position.y, 12, YELLOW);
 }
 
+void PathAgent::SetNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance) 
+{
+	Node* suitableNode = nullptr;
+	do 
+	{
+		// Get a random node from the node map
+		suitableNode = nodeMap->GetRandomNode();
+
+		// Check if the node is at least minDistance away from the reference position
+		if (glm::distance(referencePosition, suitableNode->position) >= minDistance) 
+		{
+			break; // Suitable node found
+		}
+	} while (true);
+
+	// Set the found node
+	SetNode(suitableNode);
+}
+
 //void PathAgent::SetNode(Node* node)
 //{
 //	//void SetNode(Node * node) { currentNode = node; position = node->position; }

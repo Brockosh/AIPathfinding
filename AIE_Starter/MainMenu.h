@@ -14,6 +14,7 @@ private:
     Vector2 playerBirdPosition;
     Vector2 enemyBirdPosition;
 
+    Font customFont;
 public:
     MainMenu();
     ~MainMenu();

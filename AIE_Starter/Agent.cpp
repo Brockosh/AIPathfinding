@@ -1,4 +1,5 @@
 #include "Agent.h"
+#include "PathAgent.h"
 
 //Agent::Agent()
 //{
@@ -62,7 +63,11 @@ glm::vec2 Agent::GetNearestFoodPosition()
 	return nearestFoodPos;
 }
 
-
+void Agent::SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance) 
+{
+	pathAgent.SetNodeAtMinimumDistance(nodeMap, referencePosition, minDistance);
+	this->startingPosition = pathAgent.GetCurrentNode(); 
+}
 
 bool Agent::IsMovingRight() 
 {

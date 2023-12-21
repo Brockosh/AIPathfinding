@@ -259,6 +259,15 @@ std::vector<Node*> NodeMap::DijkstrasSearch(Node* startNode, Node* endNode, Node
 	return path;
 }
 
+Node* NodeMap::GetCenterNode()
+{
+	// Calculate center position in terms of grid coordinates
+	int centerX = width / 2;
+	int centerY = height / 2;
+
+	// Retrieve and return the node at the center
+	return GetNode(centerX, centerY);
+}
 
 Node* NodeMap::GetRandomNode()
 {

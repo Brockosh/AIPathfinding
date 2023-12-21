@@ -25,4 +25,6 @@ public:
 	Node* GetNode(int x, int y) { return nodes[x + width * y]; }
 	Node* GetClosestNode(glm::vec2 worldPos);
 	Node* GetRandomNode();
+
+	Node* GetCenterNode();
 };

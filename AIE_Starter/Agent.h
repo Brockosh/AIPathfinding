@@ -17,6 +17,7 @@ public:
 		this->nodeMap = nodeMap;
 		pathAgent.SetNode(startingNode);
 		this->startingPosition = startingNode;
+
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
 		color = WHITE;
@@ -24,16 +25,19 @@ public:
 		current->Enter(this);
 		
 		isPlayerAgent = isPlayer;
+		/*if (isPlayer)
+		{
+			startingPosition = nodeMap->GetRandomNode();
+		}*/
 	}
 
-	Agent(NodeMap* nodeMap, Decision* decisionRoot, Node* startingNode, 
+	Agent(NodeMap* nodeMap, Decision* decisionRoot, 
 		float speed, bool isPlayer, FoodSpawner* fs, Agent* targetAgent = nullptr)
 		: agentDrawer(isPlayer)
 	{
 		this->decisionRoot = decisionRoot;
 		this->nodeMap = nodeMap;
-		this->startingPosition = startingNode;
-		pathAgent.SetNode(startingNode);
+
 		pathAgent.SetSpeed(speed);
 		this->targetAgent = targetAgent;
 		color = WHITE;
@@ -68,6 +72,8 @@ public:
 	Agent* GetTargetAgent() { return targetAgent; }
 	glm::vec2 GetNearestFoodPosition();
 	//Decision* GetDecisionRoot() { return decisionRoot; }
+
+	void SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance);
 
 private:
 	PathAgent pathAgent;

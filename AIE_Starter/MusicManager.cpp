@@ -10,8 +10,6 @@ void MusicManager::InitMusicManager()
 	endGameMusic = LoadMusicStream("Music/EndSound.mp3");
 }
 
-
-
 void MusicManager::PlayMusic(GameState gameState) 
 {
     std::cout << "Play music called";

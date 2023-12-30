@@ -15,8 +15,6 @@ C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,31): warnin
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   DistanceCondition.cpp
   FollowBehaviour.cpp
-  Food.cpp
-  FoodSpawner.cpp
   FoodTracker.cpp
   GameManager.cpp
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
@@ -26,19 +24,15 @@ C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,24): warnin
   GoToFoodBehaviour.cpp
   GoToPointBehaviour.cpp
   LostTargetCondition.cpp
-  NodeMap.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(48,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(51,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(52,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(129,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(129,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(129,36): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(129,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(140,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(140,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  PathAgent.cpp
-  ScoreTracker.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  MainMenu.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(32,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(38,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\MainMenu.cpp(55,25): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\MainMenu.cpp(55,25): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\MainMenu.cpp(55,50): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\MainMenu.cpp(55,50): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  MusicManager.cpp
   SelectorBehaviour.cpp
   WanderBehaviour.cpp
   Generating Code...

@@ -18,7 +18,7 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
     collisionTracker(nullptr, this),
     mainMenu(),
     endGameMenu()
-
+    
 {
     gameState = GameState::MainMenu;
 

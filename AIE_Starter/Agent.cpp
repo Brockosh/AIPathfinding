@@ -1,10 +1,6 @@
 #include "Agent.h"
 #include "PathAgent.h"
 
-//Agent::Agent()
-//{
-//}
-
 void Agent::Reset()
 {
 	pathAgent.path.clear();

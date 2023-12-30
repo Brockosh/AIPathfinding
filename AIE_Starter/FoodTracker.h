@@ -9,7 +9,7 @@ class FoodTracker
 	std::vector<Food*> activeFood;
 	NodeMap* nodeMap;
 	FoodSpawner* myFoodSpawner;
-
+	Sound foodEatenSound;
 
 public:
 	FoodTracker(Agent* pAgent, FoodSpawner* mySpawner,/*std::vector<Food*> currentFood*/ NodeMap* nm);

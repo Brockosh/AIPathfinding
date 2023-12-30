@@ -3,6 +3,7 @@
 FoodTracker::FoodTracker(Agent* pAgent, FoodSpawner* mySpawner, /*std::vector<Food*> currentFood,*/ NodeMap* nm)
     : playerAgent(pAgent), myFoodSpawner(mySpawner),  /*activeFood(currentFood),*/ nodeMap(nm)
 {
+   this->foodEatenSound = LoadSound("Music/MunchSoundFX.mp3");
 }
 
 bool FoodTracker::IsEatenByAgent(Agent* agent, Food* food)
@@ -13,6 +14,8 @@ bool FoodTracker::IsEatenByAgent(Agent* agent, Food* food)
     if (agent->IsPlayerAgent() && distance < 30)  
     {
         food->SetEatenStatus(true);
+        PlaySound(foodEatenSound);
+        std::cout << "Food sound" << std::endl;
         return true;
     }
     return false;

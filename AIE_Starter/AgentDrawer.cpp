@@ -11,17 +11,14 @@ void AgentDrawer::Update(float deltaTime)
 }
 
 
-void AgentDrawer::Draw(Agent& agent) {
-    // Determine which texture to use based on the timer
-    //If the timer is less than half the interval, use texture 1
+void AgentDrawer::Draw(Agent& agent) 
+{
+
     Texture2D& textureToUse = (wingFlapTimer < wingFlapInterval / 2) ? agentTexture1 : agentTexture2;
 
-    // Assuming Agent class has a method to get its position
     glm::vec2 agentPosition = agent.GetPosition();
 
-    // Calculate the position to draw the texture
-    // Adjust these calculations based on how you want the texture to be positioned relative to the agent
-    float scale = 0.03f; // Example scale, adjust as needed
+    float scale = 0.03f; 
     Vector2 drawPosition = 
     {
         agentPosition.x - (textureToUse.width * scale) / 2.0f,

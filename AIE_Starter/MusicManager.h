@@ -10,9 +10,10 @@ private:
     Music endGameMusic;
 
 public:
-       void  InitMusicManager(); 
+       void InitMusicManager(); 
        void PlayMusic(GameState gameState);
        void UpdateMusicStream();
+       void SetVolume(float volume);
 
     ~MusicManager() {
         // Unload music and close audio device

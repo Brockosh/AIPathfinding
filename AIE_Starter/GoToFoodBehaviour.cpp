@@ -5,7 +5,7 @@ void GoToFoodBehaviour::Update(Agent* agent, float deltaTime)
 {
 	agent->SetColor(GREEN);
 
-	float threshold = 20;
+	float threshold = 200;
 	if (glm::distance(agent->GetPathAgent()->GetPosition(), agent->GetNearestFoodPosition()) < threshold)
 	{
 		agent->SetWasFollowing(false);

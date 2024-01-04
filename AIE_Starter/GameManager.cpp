@@ -46,6 +46,7 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
     collisionTracker.Init(playerAgent, enemyAgents);
 
     musicManager.InitMusicManager(); 
+    //musicManager.SetVolume(0.1f);
     musicManager.PlayMusic(gameState);
 
 }

@@ -8,6 +8,7 @@ void MusicManager::InitMusicManager()
 	mainMenuMusic = LoadMusicStream("Music/Song1.mp3");
 	playingMusic = LoadMusicStream("Music/Song2.mp3");
 	endGameMusic = LoadMusicStream("Music/EndSound.mp3");
+    SetVolume(0.3f);
 }
 
 void MusicManager::PlayMusic(GameState gameState) 
@@ -22,7 +23,6 @@ void MusicManager::PlayMusic(GameState gameState)
     {
     case GameState::MainMenu:
         PlayMusicStream(mainMenuMusic);
-        SetMusicVolume(mainMenuMusic, 1);
         std::cout << "Play music Main Menu called";
         std::cout << "Song length = " << GetMusicTimeLength(mainMenuMusic);
         break;
@@ -34,6 +34,13 @@ void MusicManager::PlayMusic(GameState gameState)
         PlayMusicStream(endGameMusic);
         break;
     }
+}
+
+void MusicManager::SetVolume(float volume)
+{
+    SetMusicVolume(mainMenuMusic, volume);
+    SetMusicVolume(playingMusic, volume);
+    SetMusicVolume(endGameMusic, volume);
 }
 
 void MusicManager::UpdateMusicStream() 

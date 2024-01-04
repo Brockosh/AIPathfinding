@@ -1,13 +1,17 @@
 #pragma once
 #include <raylib.h>
 #include <iostream>
+#include "IButtonType.h"
+
+
 struct Button 
 {
 	Rectangle rect; 
 	const char* text; 
 	bool clicked; 
+    IButtonType buttonType;
 
-    Button(Rectangle r, const char* t) : rect(r), text(t), clicked(false) {}
+    Button(Rectangle r, const char* t, IButtonType bt) : rect(r), text(t), buttonType(bt), clicked(false) {}
 
     // Check if the button is clicked
     void Update() 
@@ -19,15 +23,13 @@ struct Button
         }
     }
 
-    // Render the button
     void Draw() const 
     {
 
         DrawRectangleRec(rect, clicked ? DARKBLUE : SKYBLUE);
-        int fontSize = 150; // You can adjust this font size as needed
+        int fontSize = 150; 
         int textWidth = MeasureText(text, fontSize);
 
-        // MeasureText doesn't provide text height directly, so we use a general estimate
         // for most fonts, the height is approximately 1.5 times the font size
         int textHeight = fontSize * 1.6;
 
@@ -36,7 +38,5 @@ struct Button
         float textY = rect.y - (rect.height - textHeight) / 2;
 
         DrawText(text, textX, textY, fontSize, WHITE);
-
     }
-
 };

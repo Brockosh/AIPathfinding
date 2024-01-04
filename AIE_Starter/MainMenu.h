@@ -19,6 +19,7 @@ public:
     MainMenu();
     ~MainMenu();
     Button GetPlayButton() { return playButton; }
+    Button GetQuitButton() { return quitButton; }
     void SetPlayButton(bool clickedStatus) { playButton.clicked = clickedStatus; }
 
     void Update();  

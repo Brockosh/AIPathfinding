@@ -245,5 +245,8 @@
     <ClInclude Include="MusicManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IButtonType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -108,13 +108,6 @@ void NodeMap::Draw()
 			Node* node = GetNode(x, y);
 			if (node == nullptr)
 			{
-				//DrawRectangle((int)(x * cellSize), (int)(y * cellSize),
-					//(int)cellSize - 1, (int)cellSize - 1, cellColor);
-				/*if (&cloudTexture != nullptr)
-				{
-					DrawTexture(cloudTexture, (int)(x * cellSize), (int)(y * cellSize), WHITE);
-				}*/
-
 				if (&cloudTexture != nullptr)
 				{
 					// Calculate the position to draw the texture

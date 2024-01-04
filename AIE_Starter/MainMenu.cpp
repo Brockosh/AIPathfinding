@@ -5,8 +5,10 @@
 
 MainMenu::MainMenu()
     : 
-    playButton(Rectangle{ GetScreenWidth() / 2 - 250.0f, GetScreenHeight() / 2 - 100.0f, 500.0f, 200.0f }, "Play"),
-    quitButton(Rectangle{ GetScreenWidth() / 2 - 250.0f, GetScreenHeight() / 2 + 120.0f, 500.0f, 200.0f }, "Quit")
+    playButton(Rectangle{ GetScreenWidth() / 2 - 250.0f, GetScreenHeight() / 2 - 100.0f, 
+        500.0f, 200.0f }, "Play", IButtonType::Play),
+    quitButton(Rectangle{ GetScreenWidth() / 2 - 250.0f, GetScreenHeight() / 2 + 120.0f, 
+        500.0f, 200.0f }, "Quit", IButtonType::Quit)
 {
     /*playerBirdTexture = LoadTexture("MyImages/Player_01.png");
     enemyBirdTexture = LoadTexture("MyImages/Player_02.png");*/

@@ -25,6 +25,5 @@ void AgentDrawer::Draw(Agent& agent)
         agentPosition.y - (textureToUse.height * scale) / 2.0f
     };
 
-    // Draw the texture
     DrawTextureEx(textureToUse, drawPosition, 0.0f, scale, WHITE);
 }

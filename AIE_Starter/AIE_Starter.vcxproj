@@ -196,6 +196,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GoToFoodBehaviour.h" />
     <ClInclude Include="GoToPointBehaviour.h" />
+    <ClInclude Include="IButtonType.h" />
     <ClInclude Include="LostTargetCondition.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MusicManager.h" />

@@ -85,7 +85,10 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 void GameManager::Update(float deltaTime)
 {
     musicManager.UpdateMusicStream();
-
+    if (mainMenu.GetQuitButton().clicked)
+    {
+        CloseWindow();
+    }
     switch (gameState)
     {
     case GameState::MainMenu:

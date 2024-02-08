@@ -14,6 +14,8 @@ private:
 	Node* currentNode;
 	Node* adhocNode;
 	float speed;
+	Node* destinationNode;
+	bool lastMovementWasRight = true;
 
 public:
 	std::vector<Node*> path;
@@ -45,4 +47,6 @@ public:
 	void SetNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance);
 
 	glm::vec2 GetPosition() { return position; }
+
+	bool IsMovingTowardsDestinationRight();
 };

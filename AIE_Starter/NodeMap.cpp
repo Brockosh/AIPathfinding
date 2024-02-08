@@ -51,6 +51,12 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 	height = asciiMap.size();
 	width = asciiMap[0].size();
 
+	//// Calculate offsets to center the NodeMap
+	//int offsetX = (GetScreenWidth() - width) / 2;
+	//int offsetY = (GetScreenHeight() - height) / 2;
+
+
+
 	nodes = new Node * [width * height];
 
 	for (int y = 0; y < height; y++)
@@ -72,7 +78,7 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 
 			// create a node for anything but a '0' character
 			nodes[x + width * y] = tile == emptySquare ? 
-			nullptr : new Node((float)(x + 0.5f) * cellSize, (float)(y + 0.5f) * cellSize);
+			nullptr : new Node((float)(x + 0.5f) * cellSize,(float)(y + 0.5f) * cellSize);
 		}
 	}
 
@@ -126,57 +132,7 @@ void NodeMap::Draw()
 	}
 }
 
-//void NodeMap::Draw()
-//{
-//	// Screen dimensions
-//	int screenWidth = 1920;  // Ideally, these should be dynamically obtained or passed to the method
-//	int screenHeight = 1080;
-//
-//	// Calculate total map size in pixels
-//	int totalMapWidth = width * cellSize;
-//	int totalMapHeight = height * cellSize;
-//
-//	// Calculate offset to center the map
-//	int offsetX = (screenWidth - totalMapWidth) / 2;
-//	int offsetY = (screenHeight - totalMapHeight) / 2;
-//
-//	Color cellColor{ WHITE };
-//	Color lineColor{ DARKBLUE };
-//
-//	for (int y = 0; y < height; y++)
-//	{
-//		for (int x = 0; x < width; x++)
-//		{
-//			Node* node = GetNode(x, y);
-//			if (node == nullptr)
-//			{
-//				if (&cloudTexture != nullptr)
-//				{
-//					// Calculate the position to draw the texture
-//					int drawPosX = (int)(x * cellSize) + offsetX;
-//					int drawPosY = (int)(y * cellSize) + offsetY;
-//
-//					// Calculate scaling factors to fit the texture into the cell
-//					float scaleWidth = cellSize / (float)cloudTexture.width;
-//					float scaleHeight = cellSize / (float)cloudTexture.height;
-//					float scale = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight;
-//
-//					Vector2 position = { drawPosX, drawPosY };
-//
-//					// Draw the scaled texture
-//					DrawTextureEx(cloudTexture, position, 0.0f, scale, WHITE);
-//				}
-//				continue;
-//			}
-//
-//			for (int i = 0; i < node->connections.size(); i++)
-//			{
-//				Node* other = node->connections[i].target;
-//				DrawLine((x + 0.5f) * cellSize, (y + 0.5) * cellSize, (int)other->position.x, (int)other->position.y, lineColor);
-//			}
-//		}
-//	}
-//}
+
 
 
 Node* NodeMap::GetClosestNode(glm::vec2 worldPos)

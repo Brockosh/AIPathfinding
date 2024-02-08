@@ -39,6 +39,8 @@ void PathAgent::Update(float deltaTime)
 
 void PathAgent::SetDestination(Node* node, NodeMap* nodeMap)
 {
+	destinationNode = node;
+	std::cout << "NEW DES NODE SET" << std::endl;
 	if (adhocNode != nullptr) delete adhocNode;
 	adhocNode = new Node((float)this->GetPosition().x, (float)this->GetPosition().y);
 	path = NodeMap::DijkstrasSearch(currentNode, node, adhocNode);
@@ -69,6 +71,37 @@ void PathAgent::SetNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePo
 
 	// Set the found node
 	SetNode(suitableNode);
+}
+
+
+bool PathAgent::IsMovingTowardsDestinationRight() {
+	if (!currentNode || path.empty()) 
+	{
+		// No current node or path is empty, can't determine direction.
+		// Return the last known direction 
+		return lastMovementWasRight; 
+	}
+
+	// Assuming destinationNode is defined somewhere correctly
+	if (!destinationNode) 
+	{
+		// No destination node defined, can't determine direction.
+		// Return the last known direction instead of false
+		return lastMovementWasRight; 
+	}
+
+	// Tolerance to minimize jitter
+	float directionTolerance = 0.01f; 
+	float deltaX = destinationNode->position.x - currentNode->position.x;
+
+	if (std::abs(deltaX) > directionTolerance) 
+	{   // Only consider movement if it's significant
+		// Update the last known direction based on current movement
+		lastMovementWasRight = deltaX > 0; 
+	}
+
+	// Return the last known direction instead of false when the difference is within the tolerance
+	return lastMovementWasRight;
 }
 
 //void PathAgent::SetNode(Node* node)

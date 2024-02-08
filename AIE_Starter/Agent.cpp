@@ -15,9 +15,9 @@ void Agent::Update(float deltaTime)
 		decisionRoot->MakeDecision(this, deltaTime);
 
 	pathAgent.Update(deltaTime);
-	//previousPosition = pathAgent.GetPosition();
-	agentDrawer.Update(deltaTime);
 	//IsMovingRight();
+	//previousPosition = GetPathAgent()->GetPosition();
+	agentDrawer.Update(deltaTime);
 }
 
 void Agent::Draw()
@@ -67,14 +67,15 @@ void Agent::SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referen
 
 bool Agent::IsMovingRight() 
 {
+
 	glm::vec2 currentPosition = GetPathAgent()->GetPosition();
-	/*if (currentPosition.x > previousPosition.x)
+	if (currentPosition.x > previousPosition.x)
 	{
 		std::cout << "Moving right" << std::endl;
 	}
 	else
 	{
 		std::cout << "Moving left" << std::endl;
-	}*/
+	}
 	return currentPosition.x > previousPosition.x;
 }

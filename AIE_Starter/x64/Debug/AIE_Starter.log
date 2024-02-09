@@ -1,11 +1,15 @@
 ﻿  NodeMap.cpp
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(48,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(51,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(52,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(118,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(118,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(118,36): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(118,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(129,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(129,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(54,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(106,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(107,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(133,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(133,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(133,36): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(133,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(144,68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(144,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(282,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\NodeMap.cpp(283,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

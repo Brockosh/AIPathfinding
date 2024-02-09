@@ -13,6 +13,7 @@ class NodeMap
 	Node** nodes;
 	Node* start;
 	Node* end;
+	
 
 	void ConnectWestAndSouth(int x, int y);
 

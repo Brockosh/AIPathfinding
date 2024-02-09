@@ -47,13 +47,19 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 {
 	this->cellSize = cellSize;
 	const char emptySquare = '0';
-
+	//20
 	height = asciiMap.size();
+	std::cout << "Height = " << height << std::endl;
+	//32
 	width = asciiMap[0].size();
+	std::cout << width << std::endl;
 
-	//// Calculate offsets to center the NodeMap
-	//int offsetX = (GetScreenWidth() - width) / 2;
-	//int offsetY = (GetScreenHeight() - height) / 2;
+
+	int totalMapWidth = width * cellSize;
+	int totalMapHeight = height * cellSize;
+	int offsetX = (1920 - totalMapWidth) / 2;
+	int offsetY = (1080 - totalMapHeight) / 2;
+
 
 
 
@@ -78,7 +84,7 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 
 			// create a node for anything but a '0' character
 			nodes[x + width * y] = tile == emptySquare ? 
-			nullptr : new Node((float)(x + 0.5f) * cellSize,(float)(y + 0.5f) * cellSize);
+			nullptr : new Node((float)(x + 0.5f) * cellSize + offsetX,(float)(y + 0.5f) * cellSize + offsetY);
 		}
 	}
 
@@ -97,6 +103,13 @@ void NodeMap::Draw()
 	Color cellColor{ WHITE };
 	Color lineColor{ DARKBLUE };
 
+	int totalMapWidth = 32 * cellSize;
+	int totalMapHeight = 20 * cellSize;
+	int offsetX = (1920 - totalMapWidth) / 2;
+	int offsetY = (1080 - totalMapHeight) / 2;
+
+	
+
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
@@ -107,8 +120,10 @@ void NodeMap::Draw()
 				if (&cloudTexture != nullptr)
 				{
 					// Calculate the position to draw the texture
-					int drawPosX = (int)(x * cellSize);
-					int drawPosY = (int)(y * cellSize);
+					int drawPosX = (int)(x * cellSize + offsetX);
+					//int drawPosX = (int)(node->position.x);
+					int drawPosY = (int)(y * cellSize + offsetY);
+					//int drawPosY = (int)(node->position.y);
 
 					// Calculate scaling factors to fit the texture into the cell
 					float scaleWidth = cellSize / (float)cloudTexture.width;
@@ -126,7 +141,7 @@ void NodeMap::Draw()
 			for (int i = 0; i < node->connections.size(); i++)
 			{
 				Node* other = node->connections[i].target;
-				DrawLine((x + 0.5f) * cellSize, (y + 0.5) * cellSize, (int)other->position.x, (int)other->position.y, lineColor);
+				DrawLine((x + 0.5f) * cellSize + offsetX, (y + 0.5) * cellSize + offsetY, (int)other->position.x, (int)other->position.y , lineColor);
 			}
 		}
 	}
@@ -263,11 +278,18 @@ Node* NodeMap::GetCenterNode()
 Node* NodeMap::GetRandomNode()
 {
 	Node* node = nullptr;
+
+	int totalMapWidth = 32 * cellSize;
+	int totalMapHeight = 20 * cellSize;
+	int offsetX = (1920 - totalMapWidth) / 2;
+	int offsetY = (1080 - totalMapHeight) / 2;
 	while (node == nullptr)
 	{
 		//Use modulus with width and height to keep return values constrained to W-1 and H-1
-		int x = rand() % width;
-		int y = rand() % height;
+		int x = rand() % width + offsetX;
+		//int x = rand() % asciiWidth;
+		int y = rand() % height + offsetY;
+		//int y = rand() % asciiHeight;
 
 		node = GetNode(x, y);
 		if (node == nullptr)
@@ -277,3 +299,4 @@ Node* NodeMap::GetRandomNode()
 	}
 	return node;
 }
+

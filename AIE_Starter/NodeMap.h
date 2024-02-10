@@ -24,6 +24,7 @@ public:
 	float GetCellSize() { return cellSize; }
 	static std::vector<Node*>DijkstrasSearch(Node* startNode, Node* endNode, Node* newNode);
 	Node* GetNode(int x, int y) { return nodes[x + width * y]; }
+	//Node* GetNode(int x, int y);
 	Node* GetClosestNode(glm::vec2 worldPos);
 	Node* GetRandomNode();
 

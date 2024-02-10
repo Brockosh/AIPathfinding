@@ -64,7 +64,7 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 
 
 	nodes = new Node * [width * height];
-
+	std::cout << "\nInitializing NodeMap with width " << width << " and height " << height << std::endl;
 	for (int y = 0; y < height; y++)
 	{
 		//Create a reference called "line" to the current line in the ascii map
@@ -76,16 +76,39 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 			std::cout << "Mismatched line #" << y << " in ASCII map (" << line.size() << " instead of " << width << ")" << std::endl;
 		}
 
-		for (int x = 0; x < width; x++)
-		{
-			// Confirm we are within the bounds of the string "line" and if so, assign the character
-			// at that index to "tile"
-			char tile = x < line.size() ? line[x] : emptySquare;
+		//for (int x = 0; x < width; x++)
+		//{
+		//	// Confirm we are within the bounds of the string "line" and if so, assign the character
+		//	// at that index to "tile"
+		//	char tile = x < line.size() ? line[x] : emptySquare;
 
-			// create a node for anything but a '0' character
-			nodes[x + width * y] = tile == emptySquare ? 
-			nullptr : new Node((float)(x + 0.5f) * cellSize + offsetX,(float)(y + 0.5f) * cellSize + offsetY);
+		//	std::cout << "Tile at (" << x << ", " << y << "): " << tile << std::endl;
+
+		//	// create a node for anything but a '0' character
+		//	nodes[x + width * y] = tile == emptySquare ? 
+		//	nullptr : new Node((float)(x + 0.5f) * cellSize + offsetX,(float)(y + 0.5f) * cellSize + offsetY);
+
+
+
+		//}
+
+		for (int x = 0; x < width; ++x) {
+			char tile = line[x]; // Directly access the character
+
+			// Calculate the position for the node, taking into account the cell size and offsets
+			float nodePosX = (x + 0.5f) * cellSize + offsetX;
+			float nodePosY = (y + 0.5f) * cellSize + offsetY;
+
+			// Only create a node if the tile is not marked as empty
+			if (tile != emptySquare) {
+				nodes[y * width + x] = new Node(nodePosX, nodePosY);
+			}
+			else {
+				nodes[y * width + x] = nullptr;
+			}
+
 		}
+
 	}
 
 	// Connect nodes after they are initialized.
@@ -143,12 +166,52 @@ void NodeMap::Draw()
 				Node* other = node->connections[i].target;
 				DrawLine((x + 0.5f) * cellSize + offsetX, (y + 0.5) * cellSize + offsetY, (int)other->position.x, (int)other->position.y , lineColor);
 			}
+
+			//DRAW NODES FOR DEBUGGING
+
+			//for (int y = 0; y < height; y++) {
+			//	for (int x = 0; x < width; x++) {
+			//		Node* node = GetNode(x, y);
+			//		if (node != nullptr) {
+			//			// Calculate the visual position for the node based on its logical grid position
+			//			Vector2 position = {
+			//				(float)(x * cellSize + offsetX + cellSize / 2), // Center of the cell
+			//				(float)(y * cellSize + offsetY + cellSize / 2)
+			//			};
+
+			//			// Draw the node (for example, as a circle)
+			//			DrawCircleV(position, cellSize / 4, cellColor); // Adjust the size as needed
+
+			//			// Draw connections
+			//			for (const auto& connection : node->connections) {
+			//				Node* other = connection.target;
+			//				DrawLineEx(position, Vector2{ other->position.x, other->position.y }, 2, lineColor); // Adjust line thickness as needed
+			//			}
+			//		}
+			//		else {
+			//			// Optional: Draw something for null nodes if needed, e.g., a different texture or nothing
+			//		}
+			//	}
+			//}
+
 		}
 	}
 }
 
 
 
+
+//Node* NodeMap::GetNode(int x, int y)
+//{
+//	int totalMapWidth = 32 * cellSize;
+//	int totalMapHeight = 20 * cellSize;
+//	int offsetX = (1920 - totalMapWidth) / 2;
+//	int offsetY = (1080 - totalMapHeight) / 2;
+//
+//
+//	{ return nodes[(x + offsetX) + width * (y + offsetY)]; }
+//	
+//}
 
 Node* NodeMap::GetClosestNode(glm::vec2 worldPos)
 {
@@ -286,9 +349,9 @@ Node* NodeMap::GetRandomNode()
 	while (node == nullptr)
 	{
 		//Use modulus with width and height to keep return values constrained to W-1 and H-1
-		int x = rand() % width + offsetX;
+		int x = rand() % width /*+ offsetX*/;
 		//int x = rand() % asciiWidth;
-		int y = rand() % height + offsetY;
+		int y = rand() % height /*+ offsetY*/;
 		//int y = rand() % asciiHeight;
 
 		node = GetNode(x, y);

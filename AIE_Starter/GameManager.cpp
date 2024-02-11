@@ -88,7 +88,8 @@ void GameManager::Update(float deltaTime)
     musicManager.UpdateMusicStream();
     if (mainMenu.GetQuitButton().clicked)
     {
-        CloseWindow();
+        SetQuitting(true);
+        return;
     }
     switch (gameState)
     {
@@ -128,7 +129,7 @@ void GameManager::Draw()
     switch (gameState)
     {
     case GameState::MainMenu:
-        mainMenu.Draw();
+            mainMenu.Draw();
         break;
 
     case GameState::Playing:

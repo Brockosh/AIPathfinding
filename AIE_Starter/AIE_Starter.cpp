@@ -1,5 +1,5 @@
 #define RAYGUI_SUPPORT_ICONS
-#include "raygui.h"
+//#include "raygui.h"
 #include "raylib.h"
 #include "Pathfinding.h"
 #include <string>
@@ -46,8 +46,8 @@ int main(int argc, char* argv[])
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    int screenWidth = 1920;
-    int screenHeight = 1080;
+    int screenWidth = 1600;
+    int screenHeight = 1150;
 
     InitWindow(screenWidth, screenHeight, "AI Pathfinding");
 
@@ -115,11 +115,16 @@ int main(int argc, char* argv[])
 
         gameManager.Update(deltaTime);
 
-        // Draw
+        if (gameManager.IsQuitting()) 
+        {
+            break; 
+        }
+
         BeginDrawing();
         ClearBackground({ 135, 206, 235 });
         gameManager.Draw();
         EndDrawing();
+
         //----------------------------------------------------------------------------------
     }
 

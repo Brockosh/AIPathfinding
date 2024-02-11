@@ -1,7 +1,7 @@
 #pragma once
 #include "MainMenu.h"
 #include "raylib.h"
-#include "raygui.h"
+//#include "raygui.h"
 
 MainMenu::MainMenu()
     : 
@@ -39,6 +39,11 @@ void MainMenu::Update()
 {
     playButton.Update();
     quitButton.Update();
+
+    //if (quitButton.clicked)
+    //{
+    //    WindowShouldClose();
+    //}
 }
 
 // Draw function to handle rendering of the menu

@@ -63,7 +63,7 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 
 
 
-	nodes = new Node * [width * height];
+	nodes = new Node* [width * height];
 	std::cout << "\nInitializing NodeMap with width " << width << " and height " << height << std::endl;
 	for (int y = 0; y < height; y++)
 	{
@@ -76,38 +76,38 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 			std::cout << "Mismatched line #" << y << " in ASCII map (" << line.size() << " instead of " << width << ")" << std::endl;
 		}
 
-		//for (int x = 0; x < width; x++)
-		//{
-		//	// Confirm we are within the bounds of the string "line" and if so, assign the character
-		//	// at that index to "tile"
-		//	char tile = x < line.size() ? line[x] : emptySquare;
+		for (int x = 0; x < width; x++)
+		{
+			// Confirm we are within the bounds of the string "line" and if so, assign the character
+			// at that index to "tile"
+			char tile = x < line.size() ? line[x] : emptySquare;
 
-		//	std::cout << "Tile at (" << x << ", " << y << "): " << tile << std::endl;
+			std::cout << "Tile at (" << x << ", " << y << "): " << tile << std::endl;
 
-		//	// create a node for anything but a '0' character
-		//	nodes[x + width * y] = tile == emptySquare ? 
-		//	nullptr : new Node((float)(x + 0.5f) * cellSize + offsetX,(float)(y + 0.5f) * cellSize + offsetY);
+			// create a node for anything but a '0' character
+			nodes[x + width * y] = tile == emptySquare ? 
+			nullptr : new Node((float)(x + 0.5f) * cellSize /*+ offsetX*/,(float)(y + 0.5f) * cellSize /*+ offsetY*/);
 
 
-
-		//}
-
-		for (int x = 0; x < width; ++x) {
-			char tile = line[x]; // Directly access the character
-
-			// Calculate the position for the node, taking into account the cell size and offsets
-			float nodePosX = (x + 0.5f) * cellSize + offsetX;
-			float nodePosY = (y + 0.5f) * cellSize + offsetY;
-
-			// Only create a node if the tile is not marked as empty
-			if (tile != emptySquare) {
-				nodes[y * width + x] = new Node(nodePosX, nodePosY);
-			}
-			else {
-				nodes[y * width + x] = nullptr;
-			}
 
 		}
+
+		//for (int x = 0; x < width; ++x) {
+		//	char tile = line[x]; // Directly access the character
+
+		//	// Calculate the position for the node, taking into account the cell size and offsets
+		//	float nodePosX = (x + 0.5f) * cellSize + offsetX;
+		//	float nodePosY = (y + 0.5f) * cellSize + offsetY;
+
+		//	// Only create a node if the tile is not marked as empty
+		//	if (tile != emptySquare) {
+		//		nodes[y * width + x] = new Node(nodePosX, nodePosY);
+		//	}
+		//	else {
+		//		nodes[y * width + x] = nullptr;
+		//	}
+
+		//}
 
 	}
 
@@ -143,9 +143,9 @@ void NodeMap::Draw()
 				if (&cloudTexture != nullptr)
 				{
 					// Calculate the position to draw the texture
-					int drawPosX = (int)(x * cellSize + offsetX);
+					int drawPosX = (int)(x * cellSize /*+ offsetX*/);
 					//int drawPosX = (int)(node->position.x);
-					int drawPosY = (int)(y * cellSize + offsetY);
+					int drawPosY = (int)(y * cellSize /*+ offsetY*/);
 					//int drawPosY = (int)(node->position.y);
 
 					// Calculate scaling factors to fit the texture into the cell
@@ -164,7 +164,7 @@ void NodeMap::Draw()
 			for (int i = 0; i < node->connections.size(); i++)
 			{
 				Node* other = node->connections[i].target;
-				DrawLine((x + 0.5f) * cellSize + offsetX, (y + 0.5) * cellSize + offsetY, (int)other->position.x, (int)other->position.y , lineColor);
+				DrawLine((x + 0.5f) * cellSize /*+ offsetX*/, (y + 0.5) * cellSize /*+ offsetY*/, (int)other->position.x, (int)other->position.y , lineColor);
 			}
 
 			//DRAW NODES FOR DEBUGGING

@@ -16,6 +16,7 @@
 
 class GameManager {
 private:
+    bool isQuitting = false;
     std::vector<Agent*> agentsInGame;
     Agent* playerAgent;
     std::vector<Agent*> enemyAgents;
@@ -30,6 +31,8 @@ private:
     GameState gameState;
 
 public:
+    void SetQuitting(bool quitting) { isQuitting = quitting; }
+    bool IsQuitting() const { return isQuitting; }
     NodeMap* nodeMap;
 	GameManager(NodeMap* nodeMap, int numberOfEnemies, float playerSpeed, float enemySpeed, int foodAmount);
     ABDecision* SetupEnemyDecisionTree();

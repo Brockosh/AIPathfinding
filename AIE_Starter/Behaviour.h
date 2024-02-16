@@ -9,4 +9,3 @@ public:
 	virtual void Exit(Agent* agent) {};
 	virtual void Update(Agent* agent, float deltaTime) = 0;
 };
-

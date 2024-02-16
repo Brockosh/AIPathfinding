@@ -13,5 +13,4 @@ public:
 
 	void Update();
 	void ResetPlayerScore() { playerScore->ResetScore(); }
-
 };

@@ -5,6 +5,12 @@
 
 void NodeMap::ConnectWestAndSouth(int x, int y)
 {
+	// Establishes connections between a node and its adjacent nodes to the west and south, 
+	// including diagonal connections to the southwest and southeast. It ensures that each node is 
+	// properly linked to its neighboring nodes, facilitating navigation and pathfinding within a grid. 
+	// If a neighboring node exists, a connection is made with a cost of 1 for direct (west or south)
+	// connections and approximately 1.414 (sqrt(2)) for diagonal connections, reflecting the increased distance.
+
 	Node* node = GetNode(x, y);
 	if (node != nullptr)
 	{
@@ -47,24 +53,11 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 {
 	this->cellSize = cellSize;
 	const char emptySquare = '0';
-	//20
 	height = asciiMap.size();
-	std::cout << "Height = " << height << std::endl;
-	//32
 	width = asciiMap[0].size();
-	std::cout << width << std::endl;
-
-
-	int totalMapWidth = width * cellSize;
-	int totalMapHeight = height * cellSize;
-	int offsetX = (1920 - totalMapWidth) / 2;
-	int offsetY = (1080 - totalMapHeight) / 2;
-
-
-
 
 	nodes = new Node* [width * height];
-	std::cout << "\nInitializing NodeMap with width " << width << " and height " << height << std::endl;
+
 	for (int y = 0; y < height; y++)
 	{
 		//Create a reference called "line" to the current line in the ascii map
@@ -82,33 +75,11 @@ void NodeMap::Init(std::vector<std::string> asciiMap, int cellSize)
 			// at that index to "tile"
 			char tile = x < line.size() ? line[x] : emptySquare;
 
-			std::cout << "Tile at (" << x << ", " << y << "): " << tile << std::endl;
-
-			// create a node for anything but a '0' character
+			// Create a node for anything but a '0' character
 			nodes[x + width * y] = tile == emptySquare ? 
 			nullptr : new Node((float)(x + 0.5f) * cellSize /*+ offsetX*/,(float)(y + 0.5f) * cellSize /*+ offsetY*/);
 
-
-
 		}
-
-		//for (int x = 0; x < width; ++x) {
-		//	char tile = line[x]; // Directly access the character
-
-		//	// Calculate the position for the node, taking into account the cell size and offsets
-		//	float nodePosX = (x + 0.5f) * cellSize + offsetX;
-		//	float nodePosY = (y + 0.5f) * cellSize + offsetY;
-
-		//	// Only create a node if the tile is not marked as empty
-		//	if (tile != emptySquare) {
-		//		nodes[y * width + x] = new Node(nodePosX, nodePosY);
-		//	}
-		//	else {
-		//		nodes[y * width + x] = nullptr;
-		//	}
-
-		//}
-
 	}
 
 	// Connect nodes after they are initialized.
@@ -126,12 +97,6 @@ void NodeMap::Draw()
 	Color cellColor{ WHITE };
 	Color lineColor{ DARKBLUE };
 
-	int totalMapWidth = 32 * cellSize;
-	int totalMapHeight = 20 * cellSize;
-	int offsetX = (1920 - totalMapWidth) / 2;
-	int offsetY = (1080 - totalMapHeight) / 2;
-
-	
 
 	for (int y = 0; y < height; y++)
 	{
@@ -143,10 +108,8 @@ void NodeMap::Draw()
 				if (&cloudTexture != nullptr)
 				{
 					// Calculate the position to draw the texture
-					int drawPosX = (int)(x * cellSize /*+ offsetX*/);
-					//int drawPosX = (int)(node->position.x);
-					int drawPosY = (int)(y * cellSize /*+ offsetY*/);
-					//int drawPosY = (int)(node->position.y);
+					int drawPosX = (int)(x * cellSize);
+					int drawPosY = (int)(y * cellSize );
 
 					// Calculate scaling factors to fit the texture into the cell
 					float scaleWidth = cellSize / (float)cloudTexture.width;
@@ -160,58 +123,11 @@ void NodeMap::Draw()
 				}
 				continue;
 			}
-
-			for (int i = 0; i < node->connections.size(); i++)
-			{
-				Node* other = node->connections[i].target;
-				DrawLine((x + 0.5f) * cellSize /*+ offsetX*/, (y + 0.5) * cellSize /*+ offsetY*/, (int)other->position.x, (int)other->position.y , lineColor);
-			}
-
-			//DRAW NODES FOR DEBUGGING
-
-			//for (int y = 0; y < height; y++) {
-			//	for (int x = 0; x < width; x++) {
-			//		Node* node = GetNode(x, y);
-			//		if (node != nullptr) {
-			//			// Calculate the visual position for the node based on its logical grid position
-			//			Vector2 position = {
-			//				(float)(x * cellSize + offsetX + cellSize / 2), // Center of the cell
-			//				(float)(y * cellSize + offsetY + cellSize / 2)
-			//			};
-
-			//			// Draw the node (for example, as a circle)
-			//			DrawCircleV(position, cellSize / 4, cellColor); // Adjust the size as needed
-
-			//			// Draw connections
-			//			for (const auto& connection : node->connections) {
-			//				Node* other = connection.target;
-			//				DrawLineEx(position, Vector2{ other->position.x, other->position.y }, 2, lineColor); // Adjust line thickness as needed
-			//			}
-			//		}
-			//		else {
-			//			// Optional: Draw something for null nodes if needed, e.g., a different texture or nothing
-			//		}
-			//	}
-			//}
-
 		}
 	}
 }
 
 
-
-
-//Node* NodeMap::GetNode(int x, int y)
-//{
-//	int totalMapWidth = 32 * cellSize;
-//	int totalMapHeight = 20 * cellSize;
-//	int offsetX = (1920 - totalMapWidth) / 2;
-//	int offsetY = (1080 - totalMapHeight) / 2;
-//
-//
-//	{ return nodes[(x + offsetX) + width * (y + offsetY)]; }
-//	
-//}
 
 Node* NodeMap::GetClosestNode(glm::vec2 worldPos)
 {
@@ -342,17 +258,11 @@ Node* NodeMap::GetRandomNode()
 {
 	Node* node = nullptr;
 
-	int totalMapWidth = 32 * cellSize;
-	int totalMapHeight = 20 * cellSize;
-	int offsetX = (1920 - totalMapWidth) / 2;
-	int offsetY = (1080 - totalMapHeight) / 2;
 	while (node == nullptr)
 	{
 		//Use modulus with width and height to keep return values constrained to W-1 and H-1
-		int x = rand() % width /*+ offsetX*/;
-		//int x = rand() % asciiWidth;
-		int y = rand() % height /*+ offsetY*/;
-		//int y = rand() % asciiHeight;
+		int x = rand() % width;
+		int y = rand() % height;
 
 		node = GetNode(x, y);
 		if (node == nullptr)
@@ -362,4 +272,3 @@ Node* NodeMap::GetRandomNode()
 	}
 	return node;
 }
-

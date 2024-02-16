@@ -10,9 +10,7 @@ CollisionTracker::CollisionTracker(Agent* player, GameManager* gm)
 bool CollisionTracker::IsColliding(Agent* player, Agent* enemy)
 {
     float distance = glm::distance(player->GetPosition(), enemy->GetPosition());
-    
     return distance < 5.0f;
-    std::cout << "Collision has Occured;" << std::endl;
 }
 
 void CollisionTracker::Update()
@@ -21,7 +19,6 @@ void CollisionTracker::Update()
     {
         if (IsColliding(playerAgent, enemy))
         {
-            std::cout << "HIT" << std::endl;
             gameManager->SwitchToEndGameMenu();
             return;
         }

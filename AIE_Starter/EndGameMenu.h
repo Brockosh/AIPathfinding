@@ -11,7 +11,6 @@ private:
 
 public:
     EndGameMenu();
-    /*void Start(int Score);*/
     void Update(float deltaTime);
     bool ShouldExit();
     void Exit() { elapsedTime = 0; }
@@ -19,5 +18,4 @@ public:
     void SetPlayerScore(int score) {
         playerScore = score;
     }
-
 };

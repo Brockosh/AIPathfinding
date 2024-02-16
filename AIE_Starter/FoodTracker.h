@@ -9,10 +9,9 @@ class FoodTracker
 	std::vector<Food*> activeFood;
 	NodeMap* nodeMap;
 	FoodSpawner* myFoodSpawner;
-	Sound foodEatenSound;
 
 public:
-	FoodTracker(Agent* pAgent, FoodSpawner* mySpawner,/*std::vector<Food*> currentFood*/ NodeMap* nm);
+	FoodTracker(Agent* pAgent, FoodSpawner* mySpawner, NodeMap* nm);
 	bool IsEatenByAgent(Agent* agent, Food* food);
 	void Update();
 	void Init(Agent* pAgent);

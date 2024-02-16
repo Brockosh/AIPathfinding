@@ -1,21 +1,19 @@
 #include "FoodTracker.h"
 
-FoodTracker::FoodTracker(Agent* pAgent, FoodSpawner* mySpawner, /*std::vector<Food*> currentFood,*/ NodeMap* nm)
-    : playerAgent(pAgent), myFoodSpawner(mySpawner),  /*activeFood(currentFood),*/ nodeMap(nm)
-{
-   this->foodEatenSound = LoadSound("Music/MunchSoundFX.mp3");
-}
+FoodTracker::FoodTracker(Agent* pAgent, FoodSpawner* mySpawner,NodeMap* nm)
+    : playerAgent(pAgent), myFoodSpawner(mySpawner), nodeMap(nm)
+{}
 
 bool FoodTracker::IsEatenByAgent(Agent* agent, Food* food)
 {
+    // Calculate the distance between the agent and the food
     glm::vec2 distanceVec = agent->GetPosition() - food->position;
     float distance = glm::length(distanceVec);
 
-    if (agent->IsPlayerAgent() && distance < 30)  
+    // If the agent is the player and is close enough to the food, consider the food eaten
+    if (agent->IsPlayerAgent() && distance < 30)
     {
         food->SetEatenStatus(true);
-        PlaySound(foodEatenSound);
-        std::cout << "Food sound" << std::endl;
         return true;
     }
     return false;
@@ -30,15 +28,16 @@ void FoodTracker::Init(Agent* pAgent)
 
 void FoodTracker::Update()
 {
+    // Update the list of active food items
     activeFood = myFoodSpawner->GetActiveFood();
 
-    // Iterate through all active food items and check if they've been eaten
+    // Check each food item to see if it's been eaten by the player agent
     for (Food* food : activeFood)
     {
         IsEatenByAgent(playerAgent, food);
     }
 
-    // Remove eaten foods from the activeFood vector
+    // Filter out the eaten foods from the activeFood list
     std::vector<Food*> uneatenFoods;
     for (Food* food : activeFood)
     {
@@ -47,6 +46,6 @@ void FoodTracker::Update()
             uneatenFoods.push_back(food);
         }
     }
-    // Replace the old vector with the uneaten foods
-    activeFood = uneatenFoods; 
+    // Update the activeFood list to only include uneaten foods
+    activeFood = uneatenFoods;
 }

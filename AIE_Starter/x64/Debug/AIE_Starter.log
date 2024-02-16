@@ -1,17 +1,13 @@
-﻿  AIE_Starter.cpp
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\ScoreTracker.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file 'AIE_Starter.cpp')
+﻿  MainMenu.cpp
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'MainMenu.cpp')
   
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(34,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'AIE_Starter.cpp')
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(46,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'MainMenu.cpp')
   
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(40,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'AIE_Starter.cpp')
+C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(46,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'MainMenu.cpp')
   
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\Button.h(40,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'AIE_Starter.cpp')
-  
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(86,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(91,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\AIPathfinding\AIE_Starter\AIE_Starter.cpp(92,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  MusicManager.cpp
+  Generating Code...
   AIE_Starter.vcxproj -> C:\Users\User\Documents\GitHub\AIPathfinding\x64\Debug\AIE_Starter.exe

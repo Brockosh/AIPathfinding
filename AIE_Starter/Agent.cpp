@@ -8,55 +8,61 @@ void Agent::Reset()
 
 void Agent::Update(float deltaTime)
 {
-	if (current != nullptr)
-		current->Update(this, deltaTime);
+    // Update current behavior if available
+    if (current != nullptr)
+        current->Update(this, deltaTime);
 
-	if (decisionRoot != nullptr)
-		decisionRoot->MakeDecision(this, deltaTime);
+    // Make decisions if a decision tree is set
+    if (decisionRoot != nullptr)
+        decisionRoot->MakeDecision(this, deltaTime);
 
-	pathAgent.Update(deltaTime);
-	//IsMovingRight();
-	//previousPosition = GetPathAgent()->GetPosition();
-	agentDrawer.Update(deltaTime);
+    pathAgent.Update(deltaTime);
+    agentDrawer.Update(deltaTime);
 }
+
 
 void Agent::Draw()
 {
-	agentDrawer.Draw(*this);
+    agentDrawer.Draw(*this);
 }
+
 
 void Agent::GoTo(glm::vec2 pos)
 {
-	Node* end = nodeMap->GetClosestNode(pos);
-	if (end == nullptr) { return; }
+    // Find the closest node to the target position
+    Node* end = nodeMap->GetClosestNode(pos);
+    if (end == nullptr) return;
 
-	Node* node = nodeMap->GetClosestNode(pathAgent.GetPosition());
+    // Find the closest node to the agent's current position
+    Node* node = nodeMap->GetClosestNode(pathAgent.GetPosition());
+    if (node == nullptr) return;
 
-	if (node == nullptr) { return; }
-
-	pathAgent.SetCurrentNode(node);
-	pathAgent.SetDestination(end, nodeMap);
+    // Set the path from the agent's current node to the destination node
+    pathAgent.SetCurrentNode(node);
+    pathAgent.SetDestination(end, nodeMap);
 }
+
 
 glm::vec2 Agent::GetNearestFoodPosition()
 {
-	glm::vec2 currentPosition = pathAgent.GetPosition();
-	float shortestDistance = std::numeric_limits<float>::max(); 
-	glm::vec2 nearestFoodPos = { 0, 0 };
+    glm::vec2 currentPosition = pathAgent.GetPosition();
+    float shortestDistance = std::numeric_limits<float>::max();
+    glm::vec2 nearestFoodPos = { 0, 0 };
 
-	for (Food* food : myFoodSpawner->GetActiveFood())
-	{
-		glm::vec2 diff = food->position - currentPosition;
-		float distance = glm::length(diff); 
+    // Find the closest active food item
+    for (Food* food : myFoodSpawner->GetActiveFood())
+    {
+        glm::vec2 diff = food->position - currentPosition;
+        float distance = glm::length(diff);
 
-		if (distance < shortestDistance)
-		{
-			shortestDistance = distance;
-			nearestFoodPos = food->position;
-		}
-	}
+        if (distance < shortestDistance)
+        {
+            shortestDistance = distance;
+            nearestFoodPos = food->position;
+        }
+    }
 
-	return nearestFoodPos;
+    return nearestFoodPos;
 }
 
 void Agent::SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance) 
@@ -67,15 +73,6 @@ void Agent::SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referen
 
 bool Agent::IsMovingRight() 
 {
-
 	glm::vec2 currentPosition = GetPathAgent()->GetPosition();
-	if (currentPosition.x > previousPosition.x)
-	{
-		std::cout << "Moving right" << std::endl;
-	}
-	else
-	{
-		std::cout << "Moving left" << std::endl;
-	}
 	return currentPosition.x > previousPosition.x;
 }

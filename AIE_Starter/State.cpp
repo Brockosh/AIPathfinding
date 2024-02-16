@@ -10,7 +10,6 @@ State::~State()
 	for (Behaviour* b : behaviours)
 	{
 		delete b;
-
 	}
 	for (auto t : transitions)
 	{

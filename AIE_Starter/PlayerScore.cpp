@@ -6,8 +6,8 @@
 void PlayerScore::Update()
 {
     std::string scoreStr = std::to_string(score);
-    std::string ScoreText = "Score: "; // Add a colon and space for formatting
-    std::string combinedStr = ScoreText + scoreStr; // Combine the ScoreText and scoreStr
+    std::string ScoreText = "Score: "; 
+    std::string combinedStr = ScoreText + scoreStr; 
 
     // Calculate the width of the combined string
     int textWidth = MeasureText(combinedStr.c_str(), 100);

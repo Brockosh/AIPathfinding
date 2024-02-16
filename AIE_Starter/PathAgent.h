@@ -23,6 +23,7 @@ public:
 	void Update(float deltaTime);
 	void SetDestination(Node* node, NodeMap* nodeMap);
 	void Draw();
+
 	void SetNode(Node* node)
 	{
 		currentNode = node; position = node->position;
@@ -33,6 +34,7 @@ public:
 		node->UpdateOccupiedStatus(true);
 	}
 	void SetSpeed(float speed) { this->speed = speed; }
+
 	void ClearPath()
 	{
 		path.clear();

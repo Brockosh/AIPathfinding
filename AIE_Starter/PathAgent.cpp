@@ -4,49 +4,57 @@
 
 void PathAgent::Update(float deltaTime)
 {
-	if (path.empty()) return;
+    // Exit early if there is no path to follow
+    if (path.empty()) return;
 
-	float distance = glm::distance(path[currentIndex]->position, position);
-	glm::vec2 dir = glm::normalize(path[currentIndex]->position - position);
+    // Calculate the distance to the next node in the path
+    float distance = glm::distance(path[currentIndex]->position, position);
+    // Determine the direction vector towards the next node
+    glm::vec2 dir = glm::normalize(path[currentIndex]->position - position);
 
-	float move = distance - (speed * deltaTime);
+    // Calculate the remaining distance after moving this frame
+    float move = distance - (speed * deltaTime);
 
-	if (move > 0)
-	{
-		position += speed * deltaTime * dir;
-		return;
-	}
+    // If there is distance left to move towards the current target node, move and exit
+    if (move > 0)
+    {
+        position += speed * deltaTime * dir;
+        return;
+    }
 
-	currentIndex++;
+    // Move to the next node in the path
+    currentIndex++;
 
-	if (currentIndex >= path.size())
-	{
-		//Maybe add back in
-		//position = path[path.size() - 1]->position;
+    // If all nodes in the path have been visited, clear the path
+    if (currentIndex >= path.size())
+    {
+        path.clear();
+        return;
+    }
 
-		path.clear();
+    // Adjust for overshooting the previous target node
+    move *= -1;
 
-		return;
-	}
+    // Calculate the new direction towards the next target node
+    glm::vec2 newDir = glm::normalize(path[currentIndex]->position - path[currentIndex - 1]->position);
 
-	move *= -1;
-
-	glm::vec2 newDir = glm::normalize(path[currentIndex]->position - path[currentIndex - 1]->position);
-
-	position += move * deltaTime * newDir;
-
+    // Move the agent along the new direction by the adjusted amount
+    position += move * deltaTime * newDir;
 }
 
+// SetDestination method updates the agent's target destination and recalculates the path.
 void PathAgent::SetDestination(Node* node, NodeMap* nodeMap)
 {
-	destinationNode = node;
-	std::cout << "NEW DES NODE SET" << std::endl;
-	if (adhocNode != nullptr) delete adhocNode;
-	adhocNode = new Node((float)this->GetPosition().x, (float)this->GetPosition().y);
-	path = NodeMap::DijkstrasSearch(currentNode, node, adhocNode);
-	//path = NodeMap::DijkstrasSearch(new Node(position.x, position.y), adhocNode);
-	//smoothedPath = nodeMap->SmoothPath(path);
-	currentIndex = 0;
+    // Set the new destination node
+    destinationNode = node;
+    // Clean up the previous ad-hoc node, if any
+    if (adhocNode != nullptr) delete adhocNode;
+    // Create a new ad-hoc node at the agent's current position
+    adhocNode = new Node((float)this->GetPosition().x, (float)this->GetPosition().y);
+    // Recalculate the path using Dijkstra's algorithm
+    path = NodeMap::DijkstrasSearch(currentNode, node, adhocNode);
+    // Reset the path traversal index
+    currentIndex = 0;
 }
 
 void PathAgent::Draw()
@@ -103,18 +111,3 @@ bool PathAgent::IsMovingTowardsDestinationRight() {
 	// Return the last known direction instead of false when the difference is within the tolerance
 	return lastMovementWasRight;
 }
-
-//void PathAgent::SetNode(Node* node)
-//{
-//	//void SetNode(Node * node) { currentNode = node; position = node->position; }
-//
-//	if (node)
-//	{
-//		currentNode = node;
-//		position = node->position;
-//	}
-//	else
-//	{
-//
-//	}
-//}

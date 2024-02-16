@@ -18,7 +18,6 @@ void GoToFoodBehaviour::Update(Agent* agent, float deltaTime)
 		agent->GoTo(agent->GetNearestFoodPosition());
 		hasRun = true;
 	}
-
 }
 
 void GoToFoodBehaviour::Enter(Agent* agent)

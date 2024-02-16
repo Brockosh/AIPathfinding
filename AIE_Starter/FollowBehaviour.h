@@ -12,4 +12,3 @@ private:
 public:
     virtual void Enter(Agent* agent);
 };
-

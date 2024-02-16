@@ -31,16 +31,17 @@ private:
     GameState gameState;
 
 public:
-    void SetQuitting(bool quitting) { isQuitting = quitting; }
-    bool IsQuitting() const { return isQuitting; }
-    NodeMap* nodeMap;
 	GameManager(NodeMap* nodeMap, int numberOfEnemies, float playerSpeed, float enemySpeed, int foodAmount);
-    ABDecision* SetupEnemyDecisionTree();
+
+    NodeMap* nodeMap;
     NodeMap* GetNodeMap() { return nodeMap; }
+    ABDecision* SetupEnemyDecisionTree();
+    bool IsQuitting() const { return isQuitting; }
+    void SetQuitting(bool quitting) { isQuitting = quitting; }
+    void SetPlayerScore(int score) { playerScore.SetScore(score); }
 	void Update(float deltaTime);
     void Draw();
 	void ResetGameState();
     void SwitchToMainMenu();
     void SwitchToEndGameMenu();
-    void SetPlayerScore(int score) { playerScore.SetScore(score); }
 };

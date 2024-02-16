@@ -6,7 +6,6 @@
 #include "AgentDrawer.h"
 class Agent
 {
-
 public:
 	Agent();
 	Agent(NodeMap* nodeMap, Behaviour* behaviour, Node* startingNode, 
@@ -38,33 +37,30 @@ public:
 		isPlayerAgent = isPlayer;
 	}
 
-	~Agent() { delete current; delete decisionRoot; /*UnloadTexture(agentTexture);*/
-
-	
-	}
+	~Agent() { delete current; delete decisionRoot; }
 
 	void Reset();
 	void MoveToStartingPosition() { this->pathAgent.SetNode(this->startingPosition); };
 	void Update(float deltaTime);
 	void Draw();
 	void GoTo(glm::vec2 pos);
-
+	void SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance);
 	void SetSpeed(float speed) { pathAgent.SetSpeed(speed); }
 	void SetTargetAgent(Agent* target) { targetAgent = target; }
 	void SetColor(Color color) { this->color = color; }
 	void SetWasFollowing(bool value) { wasFollowing = value; }
-	std::vector<Node*>  GetPath() { return pathAgent.path; }
+
 	bool PathComplete() { return pathAgent.path.empty(); }
 	bool IsPlayerAgent() { return isPlayerAgent; }
 	bool WasFollowing() { return wasFollowing; }
 	bool IsMovingRight();
 
+	std::vector<Node*>  GetPath() { return pathAgent.path; }
 	NodeMap* GetNodeMap() { return this->nodeMap;  }
 	PathAgent* GetPathAgent() { return &pathAgent; }
-	glm::vec2 GetPosition() { return pathAgent.GetPosition(); }
 	Agent* GetTargetAgent() { return targetAgent; }
+	glm::vec2 GetPosition() { return pathAgent.GetPosition(); }
 	glm::vec2 GetNearestFoodPosition();
-	void SetStartingNodeAtMinimumDistance(NodeMap* nodeMap, glm::vec2 referencePosition, float minDistance);
 
 private:
 	PathAgent pathAgent;
@@ -79,6 +75,4 @@ private:
 	glm::vec2 previousPosition;
 	bool isPlayerAgent;
 	bool wasFollowing = false;
-
-
 };

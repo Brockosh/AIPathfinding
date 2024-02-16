@@ -1,9 +1,9 @@
 #pragma once
 #include <raylib.h>
 #include "GameState.h"
+
 class MusicManager
 {
-
 private:
     Music mainMenuMusic;
     Music playingMusic;
@@ -16,11 +16,8 @@ public:
        void SetVolume(float volume);
 
     ~MusicManager() {
-        // Unload music and close audio device
         UnloadMusicStream(mainMenuMusic);
         UnloadMusicStream(playingMusic);
         CloseAudioDevice();
     }
-
 };
-

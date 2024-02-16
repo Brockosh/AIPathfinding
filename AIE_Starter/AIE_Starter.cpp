@@ -1,5 +1,4 @@
 #define RAYGUI_SUPPORT_ICONS
-//#include "raygui.h"
 #include "raylib.h"
 #include "Pathfinding.h"
 #include <string>
@@ -27,20 +26,6 @@
 #include "GameManager.h"
 
 using namespace AIForGames;
-
-static void DrawPath(const std::vector<Node*>& path, Color lineColor)
-{
-    if (path.size() < 2) return;
-
-    for (size_t i = 0; i < path.size() - 1; i++)
-    {
-        Vector2 start = { path[i]->position.x, path[i]->position.y };
-        Vector2 end = { path[i + 1]->position.x, path[i + 1]->position.y };
-
-        DrawLineEx(start, end, 2.0f, lineColor);
-    }
-}
-
 
 int main(int argc, char* argv[])
 {
@@ -92,7 +77,7 @@ int main(int argc, char* argv[])
     int middleColumn = asciiMap[0].length() / 2;
     Node* start = nodeMap.GetNode(middleColumn, middleRow);
 
-    int numberOfEnemies = 7;
+    int numberOfEnemies = 6;
     float playerSpeed = 50 * 3.5;
     float enemySpeed = playerSpeed - 20;
     int burgerAmount = 30;

@@ -49,12 +49,30 @@
     <Filter Include="Source Files\GameManagement">
       <UniqueIdentifier>{314fac09-1a4d-40b4-b083-1b49d6963f6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Music">
+      <UniqueIdentifier>{843ee64c-ff10-45c0-9488-54e73f29531e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Agent">
+      <UniqueIdentifier>{ab63476f-3585-4b6e-ba6d-e18f1e80d932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus">
+      <UniqueIdentifier>{1ce9f9c9-b5c4-4876-9c31-b1699bab46ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Agent">
+      <UniqueIdentifier>{f109e637-d309-4ce3-a92f-c8a2d076a5f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{ef4bdf61-5c6e-4909-98f0-1657744d9f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menus">
+      <UniqueIdentifier>{72094749-240f-404b-b32b-f366a222a3bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Music">
+      <UniqueIdentifier>{489bf012-3f65-48fc-86ca-80b55a580d98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIE_Starter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Agent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Behaviour.cpp">
@@ -132,26 +150,26 @@
     <ClCompile Include="ScoreTracker.cpp">
       <Filter>Source Files\GameManagement</Filter>
     </ClCompile>
-    <ClCompile Include="AgentDrawer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MusicManager.cpp">
+      <Filter>Source Files\Music</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Agent.cpp">
+      <Filter>Source Files\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentDrawer.cpp">
+      <Filter>Source Files\Agent</Filter>
     </ClCompile>
     <ClCompile Include="EndGameMenu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="MusicManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Agent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Behaviour.h">
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
@@ -227,26 +245,29 @@
     <ClInclude Include="GameManager.h">
       <Filter>Header Files\GameManagement</Filter>
     </ClInclude>
-    <ClInclude Include="AgentDrawer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Header Files\GameManagement</Filter>
     </ClInclude>
+    <ClInclude Include="Agent.h">
+      <Filter>Header Files\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentDrawer.h">
+      <Filter>Header Files\Agent</Filter>
+    </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EndGameMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="IButtonType.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicManager.h">
+      <Filter>Header Files\Music</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

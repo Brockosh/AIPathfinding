@@ -18,22 +18,25 @@ FiniteStateMachine::~FiniteStateMachine()
 
 void FiniteStateMachine::Update(Agent* agent, float deltaTime)
 {
-	//potential issue
-	newState = nullptr;
+    newState = nullptr;
 
-	for (auto t : currentState->GetTransitions())
-	{
-		if (t.condition->IsTrue(agent))
-			newState = t.targetState;
-			break;
-	}
+    // Iterate through all transitions of the current state
+    for (auto t : currentState->GetTransitions())
+    {
+        // If the transition condition is met, set the new state
+        if (t.condition->IsTrue(agent))
+        {
+            newState = t.targetState;
+            break; 
+        }
+    }
 
-	if (newState != nullptr && newState != currentState)
-	{
-		currentState->Exit(agent);
-		currentState = newState;
-		currentState->Enter(agent);
-	}
+    if (newState != nullptr && newState != currentState)
+    {
+        currentState->Exit(agent);
+        currentState = newState;
+        currentState->Enter(agent);
+    }
 
-	currentState->Update(agent, deltaTime);
+    currentState->Update(agent, deltaTime);
 }

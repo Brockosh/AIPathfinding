@@ -21,13 +21,11 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
     
 {
     gameState = GameState::MainMenu;
-
-    // Gotta fix this to predetermine starting positions
     Node* playerStartNode = nodeMap->GetCenterNode(); 
     playerAgent = new Agent(nodeMap, new GoToPointBehaviour(), playerStartNode, playerSpeed, true, &foodSpawner);
     agentsInGame.push_back(playerAgent);
 
-    // Initialize enemies
+    //  Initialize enemy agents with specified count, behaviours, and starting positions
     for (int i = 0; i < enemyCount; ++i) {
         Node* enemyStartNode = nodeMap->GetRandomNode(); 
 
@@ -35,7 +33,7 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
         ABDecision* rootDecision = SetupEnemyDecisionTree();
         Agent* enemyAgent = new Agent(nodeMap, rootDecision, enemySpeed, false, &foodSpawner, playerAgent);
 
-        float minDistance = 350.0f;/* specify the minimum distance */
+        float minDistance = 350.0f;
         enemyAgent->SetStartingNodeAtMinimumDistance(nodeMap, playerAgent->GetPosition(), minDistance);
 
         enemyAgents.push_back(enemyAgent);
@@ -44,11 +42,8 @@ GameManager::GameManager(NodeMap* nodeMap, int enemyCount, float playerSpeed, fl
 
     foodTracker.Init(playerAgent);
     collisionTracker.Init(playerAgent, enemyAgents);
-
     musicManager.InitMusicManager(); 
-    //musicManager.SetVolume(0.1f);
     musicManager.PlayMusic(gameState);
-
 }
 
     ABDecision* GameManager::SetupEnemyDecisionTree() 
